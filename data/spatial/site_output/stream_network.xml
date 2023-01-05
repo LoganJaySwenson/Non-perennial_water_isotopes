@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?><metadata>
+    <idinfo>
+        <citation>
+            <citeinfo>
+                <title>GIS210: Konza Streams</title>
+                <geoform>vector digital data</geoform>
+            </citeinfo>
+        </citation>
+        <descript>
+            <abstract>This Coverage Contains the Locations of Streams (GIS210) and Waterbodies (GIS211) within the Konza Prairie Biological Station. This is GIS210.</abstract>
+            <purpose>Provided the locations of streams within the Konza Prairie Biological Station.</purpose>
+        </descript>
+        <status>
+            <progress>Complete</progress>
+            <update>None planned</update>
+        </status>
+        <spdom>
+            <bounding>
+                <westbc>-96.615831</westbc>
+                <eastbc>-96.536901</eastbc>
+                <northbc>39.134780</northbc>
+                <southbc>39.064767</southbc>
+            </bounding>
+        </spdom>
+        <keywords>
+            <theme>
+                <themekt>None</themekt>
+                <themekey>Geographic information systems</themekey>
+                <themekey>GIS</themekey>
+                <themekey>Grasslands</themekey>
+                <themekey>streams</themekey>
+                <themekey>boundaries</themekey>
+                <themekey>biota</themekey>
+                <themekey>environment</themekey>
+                <themekey>water</themekey>
+            </theme>
+            <theme>
+                <themekt>ISO 19115 Topic Categories</themekt>
+                <themekey>boundaries</themekey>
+                <themekey>biota</themekey>
+                <themekey>environment</themekey>
+            </theme>
+            <place>
+                <placekt>GNIS</placekt>
+                <placekey>Geary county</placekey>
+                <placekey>Kansas</placekey>
+                <placekey>Riley County</placekey>
+                <placekey>KNZ</placekey>
+                <placekey>Konza Prairie Biological Station</placekey>
+                <placekey>LTER</placekey>
+            </place>
+        </keywords>
+        <accconst>None</accconst>
+        <useconst>We ask all publications, reports and proposals who use any data from KNZ acknowledge cite the KNZ program using the following statement: "Data for XXX was supported by the NSF Long Term Ecological Research Program at Konza Prairie Research Natural Area"; where XXX is the list of data sets used in the publications, reports or proposals.</useconst>
+        <ptcontac>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Konza Prairie Biological Station, Div. of Biology, Kansas State University</cntorg>
+                    <cntper>Adam Skibbe</cntper>
+                </cntorgp>
+                <cntpos>Information Manager</cntpos>
+                <cntaddr>
+                    <addrtype>unknown</addrtype>
+                    <address>Div. of Biology</address>
+                    <address>Kansas State University</address>
+                    <address>116 Ackert Hall</address>
+                    <city>Manhattan</city>
+                    <state>KS</state>
+                    <postal>66506</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>785-532-6729</cntvoice>
+                <cntfax>785-532-6653</cntfax>
+                <cntemail>askibbe@ksu.edu</cntemail>
+            </cntinfo>
+        </ptcontac>
+        <datacred>Adam Skibbe</datacred>
+        <native> Version 6.2 (Build 9200) ; Esri ArcGIS 10.7.0.10450</native>
+    </idinfo>
+    <dataqual>
+        <lineage>
+            <procstep>
+                <procdesc>DefineProjection gis012 PROJCS['NAD_1983_UTM_Zone_14N',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Transverse_Mercator'],PARAMETER['False_Easting',500000.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-99.0],PARAMETER['Scale_Factor',0.9996],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Meter',1.0]] gis012</procdesc>
+                <procdate>20090605</procdate>
+                <proctime>122306</proctime>
+            </procstep>
+        </lineage>
+    </dataqual>
+    <spdoinfo>
+        <direct>Vector</direct>
+        <ptvctinf>
+            <sdtsterm>
+                <sdtstype>String</sdtstype>
+                <ptvctcnt>96</ptvctcnt>
+            </sdtsterm>
+        </ptvctinf>
+    </spdoinfo>
+    <eainfo>
+        <detailed>
+            <enttyp>
+                <enttypl>GIS210</enttypl>
+            </enttyp>
+            <attr>
+                <attrlabl>OBJECTID</attrlabl>
+                <attrdef>Internal feature number.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        
+                    <udom>Sequential unique whole numbers that are automatically generated.</udom>
+                                    
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>Shape</attrlabl>
+                <attrdef>Feature geometry.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        
+                    <udom>Coordinates defining the features.</udom>
+                                    
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>LENGTH</attrlabl>
+                <attrdef>Stream length in meters.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>NAME</attrlabl>
+                <attrdef>Stream name.</attrdef>
+            </attr>
+            <attr>
+                <attrlabl>Shape_Length</attrlabl>
+                <attrdef>Length of feature in meters.</attrdef>
+                <attrdefs>ESRI</attrdefs>
+                <attrdomv>
+                                        
+                    <udom>Positive real numbers that are automatically generated.</udom>
+                                    
+                </attrdomv>
+            </attr>
+            <attr>
+                <attrlabl>DATACODE</attrlabl>
+            </attr>
+            <attr>
+                <attrlabl>DATAID</attrlabl>
+            </attr>
+        </detailed>
+    </eainfo>
+    <distinfo>
+        <distrib>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Konza Prairie Biological Station LTER</cntorg>
+                    <cntper>Adam Skibbe</cntper>
+                </cntorgp>
+                <cntpos>Information Manager</cntpos>
+                <cntvoice>785-532-6729</cntvoice>
+                <cntfax>785-532-6653</cntfax>
+                <cntemail>askibbe@ksu.edu</cntemail>
+            </cntinfo>
+        </distrib>
+        <distliab>Although these data have been processed successfully on a computer system at the Konza Prairie Biological Station, no warranty expressed or implied is made regarding the accuracy or utility of the data on any other system or for general or scientific purposes, nor shall the act of distribution constitute any such warranty. This disclaimer applies both to individual use of the data and aggregate use with other data. It is strongly recommended that these data are directly acquired from a Konza Prairie Research Natural Area server, and not indirectly through other sources which may have changed the data in some way. It is also strongly recommended that careful attention be paid to the contents of the metadata file associated with these data. The Konza Prairie Research Natural Area shall not be held liable for improper or incorrect use of the data described and/or contained herein.</distliab>
+        <stdorder>
+            <digform>
+                <digtopt>
+                    <onlinopt>
+                        <computer>
+                            <networka>
+                                <networkr>http://www.konza.ksu.edu/harvest/PASTA/GIS/GIS210.zip</networkr>
+                            </networka>
+                        </computer>
+                    </onlinopt>
+                </digtopt>
+            </digform>
+        </stdorder>
+    </distinfo>
+    <metainfo>
+        <metd>20191216</metd>
+        <metc>
+            <cntinfo>
+                <cntorgp>
+                    <cntorg>Konza Prairie Biological Station</cntorg>
+                    <cntper>Adam Skibbe</cntper>
+                </cntorgp>
+                <cntpos>Information Manager</cntpos>
+                <cntaddr>
+                    <addrtype>unknown</addrtype>
+                    <address>116 Ackert Hall</address>
+                    <address>Kansas State University</address>
+                    <address>Div. of Biology</address>
+                    <city>Manhattan</city>
+                    <state>Kansas</state>
+                    <postal>66506</postal>
+                    <country>US</country>
+                </cntaddr>
+                <cntvoice>785-532-6729</cntvoice>
+                <cntfax>785-532-6653</cntfax>
+                <cntemail>askibbe@ksu.edu</cntemail>
+            </cntinfo>
+        </metc>
+        <metstdn>FGDC Content Standard for Digital Geospatial Metadata</metstdn>
+        <metstdv>FGDC-STD-001-1998</metstdv>
+        <mettc>local time</mettc>
+    </metainfo>
+</metadata>

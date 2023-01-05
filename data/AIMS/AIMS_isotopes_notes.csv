@@ -1,0 +1,154 @@
+date,site,time,weather,most recent precip,crewBGC,crewMicro,connected,flowing,ghg,mims,tss,anions,cations,nutrients,dom,doc,waterIso,alkalinity,ysiWaterTemp,ysiDO,ysi%satDO,ysiSPC,ysiCond,ysiPH,ysiWaterbath,bgcNote
+6/5/2021,02M01,9:21,"sunny, 75deg, clear",6/1/2021,"Erin Seybold, Amy Burgin","Kevin Kuehn, Charlie Bond, Diana Diaz, Brett Nave",y,y,4,3,3,3,3,y,3,3,3,1,16.7C,9.42,96.9,550,463.9,7.82,18.6,
+6/5/2021,02M02,11:06,"sunny, clear, 80s",6/1/2021,"Erin Seybold, Amy Burgin, Kaci Zarek","Brett Nave, Diana Diaz",y,y,4,3,3,3,3,y,3,3,3,1,19,8.84,95.4,553,490.1,7.77,20.6,"low stic out of water, spc vs not failed to be delineated in notes"
+6/5/2021,02M03,13:14,sunny (relentless),6/1/2021,"Erin Seybold, Amy Burgin, Kaci Zarek","Brett Nave, Diana Diaz",y,y,3,3,3,3,3,y,3,3,3,1,22,8.2,95,552,521,7.69,22.7,
+6/5/2021,02M04,15:00,"sunny, clear skies",6/1/2021,"Erin Seybold, Amy Burgin, Kaci Zarek","Brett Nave, Diana Diaz",y,y,3,3,3,3,3,y,3,3,3,1,21.9,7.61,879,553,520,773,23.9,
+6/5/2021,02M05,16:21,sunny,6/1/2021,"Erin Seybold, Amy Burgin, Kaci Zarek","Brett Nave, Diana Diaz",y,y,0,3,3,3,3,y,3,3,3,1,20.3,8.3,92,572,521,7.64,21.2,"lots of biofilm, stic @junction of n02b mainstem and spring; spring was running in March. One of only wet spots in watershed; sampled just upstream/next to STIC @mixing point of trib + mainstem"
+6/5/2021,02M05_SPRING,16:21,sunny,6/1/2021,"Erin Seybold, Amy Burgin, Kaci Zarek","Brett Nave, Diana Diaz",y,y,3,3,0,3,3,y,3,3,3,1,14.5,72.4,7.35,613,489.9,7.04,15.6,
+6/6/2021,02M06,17:50,sunny,6/1/2021,"Erin Seybold, Amy Burgin, Kaci Zarek","Brett Nave, Diana Diaz",y,y,3,3,3,3,3,n,3,3,3,0,19.8,0.75,96.1,555,500,7.79,21.6,
+6/6/2021,02M07,10:05,"cloudy, cool, breeze",6/1/2021,"Amy Burgin, Kaci Zarek","Brett Nave, Brooke Vogt",y,y,3,2,3,3,3,y,3,3,3,1,16.6,8.83,91.4,556,466.8,7.56,20.4,strange seep coming in on the right of the STIC-- it's in a small pool and upstream of a small ripple
+6/6/2021,02M08,11:30,"overcast, breezy",6/1/2021,"Erin Seybold, Amy Burgin, Kaci Zarek","Brett Nave, Brooke Vogt",y,y,3,3,3,3,3,y,3,3,3,1,17,8.07,83.79,557,471.9,7.57,17.8,
+6/6/2021,02M09,12:54,"75, overcast",6/1/2021,"Erin Seybold, Amy Burgin, Kaci Zarek","Brett Nave, Brooke Vogt",y,y,3,3,3,3,3,y,3,3,3,1,17,6.69,69.4,546,462.3,7.31,NA,used stream for water bath; had a person walk in stream upstraem of the sampling location around 10m upstream; 15-20 mins before the sampling event
+6/6/2021,02M10,15:00,sunny,6/1/2021,"Erin Seybold, Amy Burgin","Brett Nave, Kaci Zarek",y,y,3,3,3,3,3,y,3,3,3,1,17.8,7.71,81.2,532,458,7.52,17.8,
+6/6/2021,02M11,16:40,BLANK,6/1/2021,"Erin Seybold, Amy Burgin, Kaci Zarek",Brett Nave,y,y,3,3,3,3,3,y,3,3,3,1,19.2,8.82,95.57,561,499,7.62,NA,"STIC is adjacent to flowing water, but may not be wet/registering water"
+6/7/2021,04W01,8:40,"hot, sunny",6/1/2021,"Sarah Flynn, Jess Wilhelm, Kaci Zarek","Ken Aho, Michael J Braus",n,n,0,0,0,0,0,n,0,3,0,0,NA,NA,NA,NA,NA,NA,NA,Dry
+6/7/2021,04W02,9:44,"warm, sunny",6/1/2021,"Sarah Flynn, Jess Wilhelm, Kaci Zarek","Ken Aho, Michael J Braus",y,y,3,3,3,3,3,y,3,3,3,1,17.7,6.05,64,546,464.3,7.48,17.7,bison in area
+6/7/2021,04W03,10:44,"suuny, warm",6/1/2021,"Sarah Flynn, Jess Wilhelm, Kaci Zarek","Ken Aho, Michael J Braus",y,y,3,3,5,3,3,y,3,3,3,1,18.7,8.36,89.7,548,482.1,7.69,23.7,"little waterfall ahead of ""high"" stic"
+6/7/2021,04W04,12:00,"sunny, hot",6/1/2021,"Sarah Flynn, Jess Wilhelm, Kaci Zarek","Ken Aho, Michael J Braus",y,y,3,3,3,3,3,y,3,0,3,1,15.1,3.11,31.1,,,7.67,BLANK,from seep; all water from seep located near stic
+6/4/2021,04T01,9:36,80s,6/1/2021,"Bri Richards, Eva Burke, Sam Thomas","Lydia Zeglin, Charlie Bond, Harley-Payj Leatherman",n,n,0,0,0,0,0,n,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,"Dry, no poison ivy"
+6/7/2021,04T02,11:00,80s,6/1/2021,"Bri Richards, Eva Burke, Sam Thomas","Lydia Zeglin, Charlie Bond, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,0,3,1,21.4,BLANK,BLANK,526,NA,8.06,24.3,"no DO, too shallow for discharge"
+6/3/2021,04M01,11:15,"hot, clear, sunny",6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,3,3,4,3,3,y,3,3,3,1,18.3,0,0,BLANK,BLANK,BLANK,21.1,
+6/5/2021,04M02,14:50,sunny! Hot! Clear sky!,6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,3,3,3,3,3,y,3,3,3,1,21.4,1,0.1,BLANK,BLANK,BLANK,24.7,
+6/5/2021,04M03,BLANK,"hot, partly cloudly",6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,3,3,3,3,3,y,3,3,3,1,22.6,0.01,1,BLANK,BLANK,BLANK,22.1,"tree in middle of stream upstream of sensor ~2.5 m. gases sampled near tree island, water too turbulent around STIC"
+6/5/2021,04M04,16:03,sunny,6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,3,3,3,3,3,y,3,3,3,1,20.3,0.1,2,BLANK,BLANK,BLANK,21.4,
+6/5/2021,04M05,17:25,"sunny, cooler in shade, breezy",6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,3,3,3,3,3,y,3,3,3,1,17.8,0,0,BLANK,BLANK,BLANK,18.4,"ysi records 0 DO, this seems incorrect. Needs to be looked at and possibly calibrated"
+6/6/2021,04M06,8:30,"hot, cloudy, breezy",6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,3,3,3,3,3,y,3,3,3,1,15.6,0,0,BLANK,BLANK,BLANK,17.7,not confident ysi is recording DO correctly; pool stic upstream ~2m sediment buildup creates fork in stream ~.5m wide x 1m long
+6/6/2021,04M07,10:00,"overcast, mild temps",6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,6,3,3,3,3,y,3,3,3,1,16.2,0,0,BLANK,BLANK,BLANK,17.1,
+6/6/2021,04M08,11:40,"overcast, mild, somewhat windy",6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,3,3,3,3,3,y,3,3,3,1,BLANK,BLANK,BLANK,BLANK,BLANK,BLANK,BLANK,samples taken from seep upstream of high stic-- except DOM which was taken at the high stic
+6/6/2021,04M09,15:30,"cloudy, hot",6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,3,3,3,3,3,y,3,3,3,1,BLANK,BLANK,BLANK,BLANK,BLANK,BLANK,BLANK,shrubs sounding sensor; ysi broke
+6/6/2021,04M10,16:30,"cloudy, hot",6/1/2021,"Jess Wilhelm, Sarah Flynn","Kevin Kuehn, Charlie Bond",y,y,3,3,3,3,3,y,3,3,3,1,BLANK,BLANK,BLANK,BLANK,BLANK,BLANK,BLANK,no ysi; will take stream water for gas equil. Last
+6/7/2021,04M11,13:45,"80s, sunny",6/1/2021,"Eva Burke, Bri Richards","Charlie Bond, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,3,3,1,21.3,BLANK,NA,NA,522,8.12,26.3,"narrow and shallow. STIC in middle of riffle, gas sampled 4m upstream of stic; no do"
+6/7/2021,04M12,14:22,"80s, hot as heck",6/1/2021,"Bri Richards, Eva Burke, Sam Thomas","Lydia Zeglin, Charlie Bond, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,3,3,1,16.1,BLANK,BLANK,531,NA,7.47,25,poison ivy; massive pool 6m upstream. 
+6/7/2021,04M13,16:13,"80s, sunny",6/1/2021,"Bri Richards, Eva Burke, Sam Thomas","Lydia Zeglin, Charlie Bond, Harley-Payj Leatherman",n,n,0,0,0,0,0,n,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,dry; no flow
+6/5/2021,01M01,15:35,"clear, some clouds, hot sunny 90s",6/1/2021,"Connor Brown, Rachel Wakefield","Ken Aho, Michael J Braus",y,y,3,3,3,3,3,y,3,3,3,1,18.5,7.6,80,BLANK,BLANK,BLANK,24.7,weir downstream of stic. Water gathered below stic and above weir -> potentially some backflow due to the gathered water.
+6/5/2021,01M02,17:15,"sunny, clear, warm",6/1/2021,"Connor Brown, Rachel Wakefield","Ken Aho, Michael J Braus",y,y,3,3,4,3,3,y,3,3,3,1,17.9,7.3,77,BLANK,BLANK,BLANK,18.8,large branch upstream of stic; tree down below stic on bank
+6/6/2021,01M03,9:00,"cloudy, warm, nice breeze",6/1/2021,"Connor Brown, Rachel Wakefield","Ken Aho, Michael J Braus",y,y,3,3,3,3,3,y,3,3,3,1,17.8,8.3,87,BLANK,BLANK,BLANK,19,"rocks and riffle just above stic (<1m); at stic the water gets a little deeper and much smoother; just below stic (<1m) there is a large rock in the middle of the stream. ~3m below stic the stream widens; NOTE: for the TSSS filters, as we progressed with filtering, people were moving in the stream, taking sediment samples etc, and there may have been unaviodable extra sediment in the water (unable to move more upstream due to riffle)"
+6/6/2021,01M04,10:37,"some sun, cloudy",6/1/2021,"Connor Brown, Rachel Wakefield","Ken Aho, Michael J Braus",y,y,3,2,3,3,3,y,3,3,3,1,18.7,6.6,70,BLANK,BLANK,BLANK,20.3,the stic is located in a pool that has formed at the bend in the stream. It's about 5m across. The water is VERY slow moving in this bend/pool. Speeds up/narrows above and below pool.
+6/6/2021,01M05,12:15,"some sun, cloudy",6/1/2021,"Connor Brown, Rachel Wakefield","Ken Aho, Michael J Braus",y,y,3,3,3,3,3,y,3,3,3,1,19.1,9.1,98,BLANK,BLANK,BLANK,23,"a narrow riffle above sstic (~5m) and a narrow riffle below stic (~3m); water widens but remains shallow around stic; cinderblock directly next to stic, upstream; high bank (steep drop) on one side (~5m high); lower bank on the other side; lots of rocks in the surrounding area; small spring coming down high bank at riffle"
+6/6/2021,01M06,14:04,"sunny, come clouds",6/1/2021,"Connor Brown, Rachel Wakefield","Ken Aho, Michael J Braus",y,y,3,3,3,3,3,y,3,3,3,1,17.5,4.2,44,BLANK,BLANK,BLANK,18.1,stream is flowing very slowly; branches upstream from stic (~5 m); rocks and riffle downstream from stic (~5m)
+6/5/2021,20M01,15:41,"90s, sunny",6/1/2021,"Eva Burke, Bri Richards","Eva Burke, Lydia Zeglin",n,n,0,0,0,0,0,n,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,dry; no water
+6/5/2021,20M02,16:27,"90s, sunny",6/1/2021,"Eva Burke, Bri Richards","Lydia Zeglin, Harley-Payj Leatherman",n,n,0,0,0,0,0,n,2,0,0,0,NA,NA,NA,NA,NA,NA,NA,"no water; 1 puddle w/ ~100 ml water ~50m downstream, water taken at puddle. 2 DOM samples only"
+6/5/2021,20M03,17:00,"90s, sunny",6/1/2021,"Eva Burke, Bri Richards","Lydia Zeglin, Harley-Payj Leatherman",n,n,0,0,0,0,0,n,0,0,0,0,NA,NA,NA,NA,NA,NA,NA,dry; no water
+6/6/2021,20M04,9:25,"70s, overcast",6/1/2021,"Eva Burke, Bri Richards","Lydia Zeglin, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,3,3,1,17.4,NA,NA,NA,510,NA,19.1,"the ysi used did not have calibrated DO sensor; we did not have flow meter, but the stream is too shallow for discharge"
+6/6/2021,20M05,10:53,"70s, overcast",6/1/2021,"Eva Burke, Bri Richards","Lydia Zeglin, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,3,3,1,19.3,NA,NA,NA,508,8.1,20.1,
+6/6/2021,SFT01,14:58,"80s, sunny",6/1/2021,"Eva Burke, Bri Richards","Lydia Zeglin, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,3,3,1,19.2,NA,NA,NA,544,NA,20.3,"small fall 1m upstream of stic, needs discharge"
+6/6/2021,SFT02,13:12,"80s, partly cloudy",6/1/2021,"Eva Burke, Bri Richards","Lydia Zeglin, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,3,3,1,18.3,NA,NA,NA,502,NA,21.9,"lots of grainy white goob for microbes, no DO due to ysi, discharge-- to small to measure"
+6/4/2021,SFM01,10:54,"clear, sunny",6/1/2021,"Erin Seybold, Jess Wilhelm, Connor Brown, Bri Richards, Sarah Flynn","Brett Nave, Lydia Zeglin, Charlie Bond, Ken Aho, Rob Ramos, Michael J Braus",y,y,3,3,3,3,3,y,3,3,3,1,17.7,7.34,77.3,563,483,7.37,17,aims synoptic sample
+6/4/2021,SFM02,14:00,"sunny, clear, hot",6/1/2021,"Erin Seybold, Jess Wilhelm, Connor Brown, Bri Richards, Sarah Flynn","Brett Nave, Lydia Zeglin, Charlie Bond, Ken Aho, Rob Ramos, Michael J Braus",y,y,3,3,3,3,3,y,3,3,3,1,19.7,8.01,87.6,485,NA,7.7,22.6,
+6/5/2021,SFM03,BLANK,"sunny, clear, hot",6/1/2021,"Jess Wilhelm, Connor Brown, Bri Richards, Sarah Flynn",BLANK,y,y,3,3,3,3,3,y,3,3,3,1,18.9,7.97,85.9,566,499.8,7.64,20,
+6/5/2021,SFM04,BLANK,"sunny, clear, hot",6/1/2021,BLANK,BLANK,y,y,3,3,3,3,3,y,3,3,3,1,17.5,6.56,68,490.6,,7.43,BLANK,
+6/5/2021,SFM05,10:57,"~70s, hot, sunny",6/1/2021,"Bri Richards, Connor Brown","Lydia Zeglin, Michael J Braus, Ken Aho, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,3,3,1,17.2,3,32,521,,7.85,18.4,
+6/5/2021,SFM06,12:16,"80s, sunny",6/1/2021,"Connor Brown, Bri Richards, Rachel Wakefield, Eva Burke","Lydia Zeglin, Michael J Braus, Ken Aho, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,3,3,1,18.5,`,34,NA,575,7.85,19,
+6/5/2021,SFM07,13:51,"90s, sunny",6/1/2021,"Connor Brown, Bri Richards, Rachel Wakefield, Eva Burke","Lydia Zeglin, Michael J Braus, Ken Aho, Harley-Payj Leatherman",y,y,3,3,3,3,3,y,3,3,3,1,21.1,8.6,97,NA,515,8.03,22.3,
+7/13/2021,SFM01,11:22am,"sunny, hot",NA,"JW, SR, EB, MW, KZ",NA,n,n,3,3,3,3,3,3,0,3,3,3,23.8,NA,NA,1112,NA,7.62,NA,"Shady, pooling 2-3 m past sensor site, sw flow stops downstream. Connected upstream, thin gray viscous biofilm on top. "
+7/13/2021,SFM02,1:06pm,"shady, sunny, warm",NA,"KZ, JW, SR, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry
+7/13/2021,SFM03,2:20pm,,,"SR, JW, MW, EB, KZ",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry
+7/13/2021,SFM04,2:30pm,sunny,,"JW, SR, EB, MW, KZ",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry
+7/13/2021,SFM05,2:45pm,sunny,,"JW, SR, EB, MW, KZ",NA,n,n,3,3,3,3,3,3,0,3,3,3,27.2,NA,NA,1186,NA,7.62,NA,"Used SFM04 sample kit, sampled from pool just upstream of STIC, STIC is dry"
+7/13/2021,SFM06,3:40pm,"cloudy, warm",,"JW, SR, EB, MW, KZ",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,dry
+7/13/2021,SFM07,4:40pm,"cloudy, hot",,"SR, JW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry streambed! No water in sight
+7/13/2021,SFT01,1:15pm,"sunny, hot",,"JW, SR, EB, MW, KZ",NA,n,n,3,3,3,3,3,3,0,3,3,3,26.1,NA,NA,1083,NA,7.2,NA,"Dry downstream of STIC, shallow pools upstream of STIC that end ~10m above STIC, stagnant water, lots of litter and algae present"
+7/13/2021,SFT02,3:53pm,"cloudy, somewhat sunny",,"JW, SR, EB, MW, KZ",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry! GW seep with water ~100 yards (or more) downstream of STIC. Purple flowers and grasses around stream. Rocky streambed.
+7/13/2021,02M01,4:34pm,partly cloudy,,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry (pool 10m upstream)
+7/13/2021,02M02,4:37pm,partly cloudy,,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry
+7/13/2021,02M03,4:43pm,partly cloudy,,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry
+7/13/2021,02M04,4:52pm,partly cloudy,,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,DRY
+7/13/2021,02M05,5:00pm,sunny,,"MW, KZ, EB",NA,n,n,3,3,3,3,3,3,0,3,3,3,24.3,NA,NA,636,NA,NA,NA,"large pool just downstream of STIC, dry upstream of STIC except for shallow pool ~5m upstream seep/spring west of STIC entering stream ~0.5 up of STIC"
+7/13/2021,02M06,5:47pm,,,"MW, KZ, EB",NA,n,n,3,3,3,3,3,3,0,3,3,3,29,NA,NA,646,NA,NA,NA,pool very murky with film
+7/14/2021,02M07,8:45am,overcast,,"MW, KZ, EB",NA,y,y,3,3,3,3,3,3,0,3,3,3,18.4,NA,NA,554,NA,NA,NA,"barely flowing, STIC in pool, murky, seep was sampled at synoptic #1, dry upstream of STIC ~2m, cannot see downstream dry."
+7/14/2021,02M08,9:45am,sunny,,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,dry
+7/14/2021,02M09,9:52am,"cool, cloudy",,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,dry
+7/14/2021,02M10,10:02am,cloudy,,"MW, KZ, EB",NA,n,n,3,3,3,3,3,3,0,3,3,3,23.5,NA,NA,567,NA,NA,NA,"large murky pool with low STIC, other STIC is dry downstream, cannot see where flow originated, banks are very muddy"
+7/14/2021,02M11,10:58am,sunny but windy,,"MW, KZ, EB",NA,y,n,3,3,3,3,3,3,0,3,3,3,24.5,NA,NA,580,NA,NA,NA,"little seep runoff, sampling at low STIC, little water at high STIC, slight flow into pool"
+7/14/2021,04W02,NA,cloudy,,"MW, KZ, JW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry
+7/14/2021,04W03,6:05pm,cloudy,,"MW, KZ, JW",NA,n,n,3,3,3,3,3,3,0,3,3,3,21.9,NA,NA,530,NA,NA,25.2,STIC is out of water
+7/14/2021,04W04,5:49pm,cloudy,,"MW, KZ, JW",NA,y,y,3,3,3,3,3,3,0,3,3,3,17.5,NA,NA,517,NA,NA,NA,"puddly flow, above a seep"
+7/14/2021,04M01,8:33am,"windy, some clouds",,"SR, JW",NA,y,y,3,3,3,3,3,3,0,3,3,3,21,NA,NA,1049,NA,7.5,NA,About 100-200m downstream-stream dries. Water flowing into and past pool. TSS and DOC samples taken at 5:15pm
+7/14/2021,04M02,10:00am,"windy, some clouds",,"SR, JW",NA,y,y,3,3,3,3,3,3,0,3,3,3,21.6,NA,NA,1010,NA,7.51,NA,"Wet! Connected and flowing. Konza falls is dry, and streambed above is dry with pool below. Possibly gw flow. GHG vial #1 water in vial. Using K-State YSI so no DO readings, alkalinity collected from Konza Falls pool upstream because of shallow water depth near STIC"
+7/14/2021,04M03,1:52pm,"cloudy, windy, hot",,"SR, JW",NA,n,y,3,3,3,3,3,3,0,3,3,3,32.1,NA,NA,904,NA,7.29,NA,"Location of pool (and waterfall): 39.08669, 096.58345. STIC is dry, Instead, Dan's STIC location ~50 yards upstream of STIC was chosen because of presence of water and pool (waterfall area). GHG #2 got water injected into it. 04M05 & 04M06 sampled before this site. This was due to bison in the way. Could not get to 04M03 or 04M04 initially. "
+7/14/2021,04M04,2:47pm,"partially cloudy, windy",,"SR, JW",NA,y,y,3,3,3,3,3,3,0,3,3,3,29,NA,NA,1017,NA,7.32,27.3,
+7/14/2021,04M05,11:16am,cloudy with sun,,"SR, JW",NA,y,y,3,3,3,3,3,3,0,3,3,3,23.7,NA,NA,1101,NA,7.46,NA,Samples taken at STIC other than the alkalinity (taken in pool). Wet! Stream is flowing here. TSS and DOC samples taken at 6pm
+7/14/2021,04M06,12:11pm,cloudy with some sun,,"SR, JW",NA,n,n,3,3,3,3,3,3,0,3,3,3,22.8,NA,NA,957,NA,7.39,NA,"Stream is wet, but with no to very minimal flow (can't tell if it's wind or longitudinal flow). Stream dries just downstream of STIC site, seep is dripping water from the sides. Stream dries just upstream of seep/spring. High STIC = dry, Low STIC = wet. TSS and DOC samples taken at 6:10pm "
+7/14/2021,04M07,5:58pm,"cloudy, some sun",,JW,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"Dry, very rocky streambed"
+7/14/2021,04M08,7:12pm,"cloudy, sun setting",,"SR, JW, EB",NA,y,y,3,3,3,3,3,3,0,3,3,3,15.3,NA,NA,508,NA,NA,21.5,All samples collected from seep
+7/14/2021,04M09,6:09pm,"cloudy, some sun",,JW,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry streambed. Both STICs dry.
+7/14/2021,04M10,6:15pm,"cloudy, some sun",,JW,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry streambed. Both STCs dry.
+7/14/2021,04M11,6:21pm,"cloudy, sunny",,JW,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,The stream has dried to the point of a mucky pool. Lost of bison activity has created a muck-filled pool around STIC and piezo. Did not sample because of mud contamination STIC and piezo should be reading SW
+7/14/2021,04M12,6:25pm,"cloudy, some sun",,JW,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"Dry! Rock, dirt, and plant stream bottom. Everything is dry, no water in sight."
+7/14/2021,04M13,6:31pm,"cloudy, sunset",,JW,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"Dry site at the very top of the stream, tiny channel, just dry rocks"
+7/14/2021,04T01,6:56pm,"cloudy, sunsetting",,JW,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"Dry trib, both STICs dry"
+7/14/2021,04T02,6:06pm,"cloudy, some sun",,JW,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"Dry trib, no water up or downstream"
+7/14/2021,01M01,12:50pm,partly cloudy,,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry
+7/14/2021,01M02,12:55pm,,,"MW, KZ, EB",NA,n,y,3,3,3,3,3,3,0,3,3,3,14.4,NA,NA,486,NA,NA,NA,"Used 01M02 sample bottles, STIC dry, sampled seep 10m downstream instead. Flows slightly from seep, seep coords: N 39.08632deg, W 96.57633. KGS YSI"
+7/14/2021,01M03,1:45pm,windy,,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,dry
+7/14/2021,01M04,1:55pm,cloudy,,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,DRY
+7/14/2021,01M05,2:15pm,sunny,,"MW, KZ, EB",NA,y,n,3,3,3,3,3,3,0,3,3,3,30,NA,NA,601,NA,NA,NA,"STIC in pool, move water from last synoptic, STIC found on right bank, dislodged by bison?"
+7/14/2021,01M06,3:05pm,partly cloudy,,"MW, KZ, EB",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,dry
+7/13/2021,20M01,4:51pm,"hot, partially cloudy",,"SR, JW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"Murky water about 200-300 m from the sensor, upstream and downstream from sensor is totally dry"
+7/13/2021,20M02,5:22pm,"cloudy, hot",,"SR, JW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry site! No water in sight. Rocky streambed. Lots of canopy cover and brush.
+7/13/2021,20M03,5:33pm,"hot, cloudy, humid",,"SR, JW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Dry stream! Rocky streambed
+7/13/2021,20M04,5:43pm,hot humid,,"SR, JW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"Dry! No water upstream or downstream. Rocky, dry streambed"
+7/14/2021,20M05,3:35pm,overcast,,"MW, KZ, EB",NA,n,n,3,3,3,3,3,3,0,3,3,3,27.3,NA,NA,587,NA,NA,NA,"low STIC in pool, high STIC. Water upstream of both STICs. Film over pool, murky. KGS YSI"
+8/10/2021,SFM01,10:55,"windy, coolish",NA,"KZ, EB, JW, MW, SR",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,mud puddles but not enough for a water sample. DRY
+8/10/2021,SFM02,11:11 AM,cloudy,this morning,"KZ, EB, JW, MW, SR",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry
+8/10/2021,SFM03,11:15 AM,"humid, cloudy",this morning or last night,"KZ, EB, JW, MW, SR",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry! Damp in the low sections of the stream
+8/10/2021,SFM04,12:05 PM,cloudy,this AM,"KZ, EB, JW, MW, SR",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry
+8/10/2021,SFM05,1:16 AM,"cloudy, humid",10 minutes ago: 12:55pm-1:10pm,"KZ, EB, JW, MW, SR",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,"Dry, no water, damp stream"
+8/10/2021,SFM06,1:30 PM,NA,NA,"KZ, EB, JW, MW, SR",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,DRY
+8/10/2021,SFM07,1:59 PM,"cloudy, lil breeze",NA,"KZ, EB, JW, MW, SR",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry. Been an hour since rain
+8/10/2021,SFT01,11:25 AM,overcast,This morning,"KZ, EB, JW, MW, SR",NA,n,n,3,3,3,3,3,3,0,3,3,3,22.4,7.57,87.4,652,620,7.4,NA,STIC is dry. Shallow pools; could not fill alkalinty to headspace. YSI: Burgin lab
+8/10/2021,SFT02,1:43 PM,"partly sunny, hot, humid",12:50pm-1:10pm,"KZ, EB, JW, MW, SR",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,"Dry, thin, rocky stream bottom"
+8/11/2021,02M01,6:26 PM,HOT & humid,yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry streambed! Very rocky
+8/11/2021,02M02,6:36 PM,"HOT, humid",yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry streambed!
+8/11/2021,02M03,6:44 PM,HOT & humid,yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,"Dry, rocky streambed"
+8/11/2021,02M04,6:50 PM,HOT & humid,yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry streambed!
+8/12/2021,02M05,8:21 AM,"Sunny, breezy",tuesday at noon,"JW, EB, MW",NA,y,y,3,3,3,3,3,3,0,3,3,3,20.6,7.8,86.9,649,594,7.76,NA,"Connected to seep, upstream is dry. Alkalinity & isotopes collected in pool (& YSI), ions, nutrients, TSS, GHG, MIMS collected in running stream from seep"
+8/12/2021,02M06,9:18 AM,"Hot, breezy",tuesday at noon,"JW, EB, MW",NA,n,n,3,0,3,0,1,0,0,NA,3,3,23.8,3,35.6,473,462.5,7.65,NA,"Pool, very murky, film on top of pool, alkalinity not to headspace, 1 filtered cation sample, DOC bottles with unfiltered water, all other bottles left empty, took GHG but not MIMS, extra alkalinity 250 ml bottle filled with unfiltered water"
+8/12/2021,02M07,9:57 AM,"Hot, breezy",tuesday at noon,"JW, EB, MW",NA,n,n,3,0,3,3,3,3,0,3,3,3,23.5,0.45,5.3,561,544,7.35,NA,"Mucky, isolated pool. No MIMS samples collected"
+8/11/2021,02M08,7:05 PM,HOT & humid,yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,"Dry streambed, rocky!"
+8/11/2021,02M09,7:09 PM,HOT & humid,yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,"Dry, rocky streambed!"
+8/11/2021,02M10,7:19 PM,Sunny & humid,yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,"Muddy, mucky, squishy streambed. Wet but no flow & no pools."
+8/11/2021,02M11,7:30 PM,"HOT, breezy",yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,"Muddy, mucky, not enough in pools to sample"
+8/11/2021,04W01,1:13 PM,Sunny + hot,yesterday afternoon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry
+8/11/2021,04W02,1:20 PM,Sunny + hot,yesterday afternoon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry! 
+8/11/2021,04W03,1:27 PM,hot + sunny,yesterday afternoon,"JW, EB, MW",NA,y,n,3,3,3,3,3,3,0,3,3,3,23.4,5.21,61,583,565,7.21,NA,"Seep upstream, pool-y, Rocky. YSI: Burgin lab"
+8/11/2021,04W04,2:30 PM,sunny,yesterday afternoon,"JW, EB, MW",NA,y,n,3,3,3,3,3,3,0,3,3,3,21.2,4.6,51.6,632,586,6.99,NA,"Shallow - headspace in alkalinity, murky. Sample from pool and seep downstream."
+8/11/2021,04M01,10:29 AM,"sunny, humid",8/10 afternoon,"SR, KZ",NA,n,n,3,3,3,3,3,3,0,3,3,3,24.5,NA,NA,NA,553,NA,NA,YSI: KGS
+8/11/2021,04M02,11:44 AM,cloudy & sunny,yesterday at noon,"SR, KZ",NA,y,n,3,3,3,3,3,3,0,3,3,3,26.2,NA,NA,NA,574,NA,NA,"Connected to the waterfall, a riffle about 1 meter from high STIC. Alkalinity & isotopes collected from waterfall pool. All other samples collected from stream downstream of Konza falls pool near low STIC"
+8/11/2021,04M03,1:11 PM,"sunny, humid, warm",yesterday afternoon,"SR, KZ",NA,y,n,3,3,3,3,3,3,0,3,3,3,33.8,NA,NA,NA,461,NA,NA,Sampling upstream of STIC by waterfall. Stops flowing at waterfall.
+8/11/2021,04M04,2:11 PM,"warm, sunny",yesterday afternoon,"SR, KZ",NA,y,y,3,3,3,3,3,3,0,3,3,3,27.9,NA,NA,NA,608,NA,NA,YSI: KGS
+8/11/2021,04M05,6:36 PM,"warm, sunny",yesterday afternoon,"SR, KZ",NA,y,n,3,3,3,3,3,3,0,3,3,3,25,NA,NA,NA,652,NA,NA,Used 04M12 sample bag. Sampled alkalinity & water isotopes from pool upstream (~3m) of STIC
+8/12/2021,04M06,9:00 AM,"sunny, windy, lil cool",8/10/21 afternoon,"SR, KZ",NA,n,n,3,3,3,3,3,3,0,3,3,3,20.8,NA,NA,NA,539,NA,NA,YSI: KGS
+8/12/2021,04M07,10:01 AM,"sunny, humid",8/10 afternoon,"SR, KZ",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry
+8/12/2021,04M08,10:33 AM,sunny + warm,8/10/21 afternoon,"SR, KZ",NA,y,y,3,3,3,3,3,3,0,3,3,3,21.2,NA,NA,NA,646,NA,NA,"Sampled at seep, alkalinity & water isotopes from pool near bottom of seep. YSI: KGS"
+8/11/2021,04M09,11:36 AM,sunny with clouds,yesterday at noon,JW EB,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry streambed
+8/11/2021,04M10,11:30 AM,"sunny, hot, humid",yesterday at noon,JW EB,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry streambed
+8/11/2021,04M11,11:00 AM,"hot, windy, humid",yesterday at noon,JW EB,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,
+8/11/2021,04M12,11:00 AM,"sunny, humid",yesterday at noon,JW EB,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,"Dry (non-flowing) streambed with damp soils and a small, murky pool around the piezometer & STIC. Pool too small + muddy to sample"
+8/11/2021,04M13,10:54 AM,"sunny, humid",yesterday at noon,JW EB,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry streambed!
+8/11/2021,04T01,11:40 AM,sunny & cloudy,yesterday at noon,JW EB,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry trib
+8/11/2021,04T02,11:50 AM,sunny & cloudy,yesterday at noon,JW EB,NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry trib
+8/10/2021,01M01,2:33 PM,"hot, humid, cloudy",2 hours ago,"SR, KZ",NA,n,n,3,3,3,3,3,3,0,3,3,3,34.4,NA,NA,NA,122,NA,NA,"Has a pool, sensor not in pool"
+8/10/2021,01M02,4:11 PM,"humid, cloudy",3 hours ago,"SR, KZ",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,DRY
+8/11/2021,01M03,8:33 AM,"breeze, cool, sunny",yesterday afternoon,"SR, KZ",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,DRY. rained yesterday afternoon
+8/11/2021,01M04,8:50 AM,"humid, sunny",yesterday afternoon,"SR, KZ",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,DRY
+8/11/2021,01M05,9:00 AM,sunny,yesterday afternoon,"SR, KZ",NA,y,n,3,3,3,3,3,3,0,3,3,3,25,NA,NA,NA,533,NA,NA,STIC in connected pool; YSI: KGS
+8/11/2021,01M06,9:28 AM,partly sunny,yesterday afternoon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,DRY
+8/10/2021,20M01,2:41 PM,overcast & humid,~1.5 hours ago,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,DRY
+8/10/2021,20M02,3:10 PM,partly cloudy,12:50-1:10pm,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry! Rocky & No water. Damp soil
+8/10/2021,20M03,3:50 PM,cloudy w/ sun,12:50-1:10pm,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry stream!
+8/10/2021,20M04,3:38 PM,sunny,12:50-1:10pm,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry stream rocky streambed.
+8/11/2021,20M05,8:38 AM,"sunny, hot",yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry! Damp soil streambed w/ rocks
+8/12/2021,04M09_STILLINGWELL,11:30 AM,sunny,tuesday at noon,"JW, EB, MW",NA,n,n,3,3,3,3,3,3,0,3,3,3,26.5,NA,NA,NA,598,NA,NA,"Alkalinity filled, too shallow to fill headspace. YSI: KGS"
+8/12/2021,04M05_STILLINGWELL,8:07 AM,"cool, windy",8/10/21 afternoon,"SR, KZ",NA,y,y,3,3,3,3,3,3,0,3,3,3,21.6,NA,NA,NA,659,NA,NA,Piezometer site with water around piezometer; YSI: KGS
+8/11/2021,02M02_STILLINGWELL,6:40 PM,"sunset, warm",yesterday at noon,"JW, EB, MW",NA,n,n,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,NA,Dry!
