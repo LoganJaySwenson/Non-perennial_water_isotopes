@@ -52,7 +52,7 @@ p1 <-
   scale_fill_manual(values = c("#636363", "#636363", "#636363", "#636363"))+
   labs(fill = "", shape = "")+
   labs(x = "", y = "")+
-  ggspatial::annotation_scale(location = 'br')+
+  ggspatial::annotation_scale(location = 'bl')+
   scale_x_continuous(expand = c(0,0), labels = function(x) paste0(x, '\u00B0', "W"))+
   scale_y_continuous(expand = c(0,0), labels = function(x) paste0(x, '\u00B0', "N"))+
   theme(strip.text = element_text(face = 'bold'), 
@@ -60,9 +60,6 @@ p1 <-
         axis.text.y = element_text(size = 8),
         legend.text = element_text(size = 8),
         legend.title = element_text(size = 8))
-
-guides(color = guide_legend(order = 0),
-       fill  = guide_legend(order = 1))
 
 #States map
 states <- map_data("state")
@@ -181,3 +178,14 @@ pp.contributing.area <- raster::extract(x = flow.accumulation.raster,
                                         method = "simple")
 pp$ContributingArea_ha <- pp.contributing.area * 1/10000
 pp
+
+#Precip
+Precip <- as_tibble(read.csv("data/LTER/Konza_Precip.csv"))
+Precip <- Precip %>%
+  mutate(date = as_date(date)) %>%
+  mutate(year = year(date)) %>%
+  group_by(year) %>%
+  summarise(annual_precip_mm = sum(precip_mm))
+
+# average annual precip between 1982-2021
+print(average_annual_precip_mm <- mean(Precip$annual_precip_mm))
