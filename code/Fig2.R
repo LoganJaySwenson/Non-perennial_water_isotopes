@@ -86,7 +86,8 @@ p2 <-
   scale_x_date(expand = c(0,0), limit=c(as.Date("2020-10-01"),as.Date("2021-09-30")),
                breaks=date_breaks("months"), labels=date_format("%b %y"))+
   scale_y_continuous(breaks = c(364, 366, 368, 370, 372))+
-  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
 
 #Read: Precipitation at Konza HQ
 Precip <- read.csv("data/LTER/Konza_Precip.csv")
@@ -106,7 +107,7 @@ p3 <-
   scale_x_date(expand = c(0,0), limit=c(as.Date("2020-10-01"),as.Date("2021-09-30")),
                breaks=date_breaks("months"), labels=date_format("%b %y"))+
   scale_y_continuous(expand = expansion(mult = c(0,0.05)))+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
 
-p1 + p2 + p3 + plot_layout(nrow = 3)
+p3 + p1 + p2 + plot_layout(nrow = 3)
 ggsave(path = "figures/", "Fig2.png", dpi=300, width = 190, height = 190, units = "mm")

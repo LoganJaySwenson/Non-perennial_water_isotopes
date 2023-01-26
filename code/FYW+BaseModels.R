@@ -107,13 +107,15 @@ FYW_model <- bind_rows(P_model_fit, Qw_model_fit) %>%
 
 #Plot sinusoidal model fit!
 ggplot()+
-  geom_line(data = P_model_fit, aes(date, predicted), linetype = 'dashed', color = "#000000", linewidth = 0.8)+
-  geom_line(data = Qw_model_fit, aes(date, predicted), linetype = 'dashed', color = "#377EB8", linewidth = 0.8)+
-  geom_point(data = FYW_model, aes(date, d18OWater, fill = type), pch = 21, size = 2.5)+
-  annotate("text", x = as.Date("2019-04-01"), y = 4, label = paste("mass ww method", round(FYW, digits = 2),"%"), size = 10/.pt)+
+  geom_line(data = P_model_fit, aes(date, predicted), linetype = 'dashed', color = "#000000")+
+  geom_line(data = Qw_model_fit, aes(date, predicted), linetype = 'dashed', color = "#377EB8")+
+  geom_point(data = FYW_model, aes(date, d18OWater, fill = type), pch = 21)+
+  annotate("text", x = as.Date("2019-04-01"), y = 4, label = paste("Mass ww method:", round(FYW, digits = 2),"%"), size = 10/.pt)+
   scale_fill_manual(values = c("#000000", "#377EB8"), labels = c(expression(δ^18*O[P]~(t)), expression(δ^18*O[Q]~(t))))+
   labs(fill = "")+
   labs(x = "", y = "\U03B4\U00B9\U2078O (‰)")+
   scale_x_date(breaks=date_breaks("years"), labels=date_format("%Y")) +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.text=element_text(size=10))
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.text=element_text(size=10),
+        legend.position = c(0.922, 0.88),
+        legend.background = element_rect(fill = "white", color = "black"))
 ggsave(path = "figures/", "FigS2.png", dpi=300, width = 190, height = 110, units = "mm")

@@ -1,4 +1,4 @@
-#Fig 2. Spatial variation in δ18O during the summer dry-down period.
+#Fig 3. Spatial variation in δ18O during the summer dry-down period.
 library(lubridate)
 library(sf)
 library(viridis)

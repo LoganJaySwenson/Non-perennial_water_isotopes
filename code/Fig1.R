@@ -19,6 +19,7 @@ sites <- as_tibble(sites) %>%
   add_row(id = "USGS Gage 06879650", long = -96.59469, lat = 39.10207) %>%
   add_row(id = "NEON Tower", long = -96.61294, lat = 39.11045) %>%
   add_row(id = "NEON Sampling Site", long = -96.60274, lat = 39.10449) %>% 
+  add_row(id = "Groundwater Wells", long = -96.584221, lat = 39.084785) %>%
   st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
   st_transform(crs = st_crs("+proj=utm +zone=14 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"))
 sites.buffer <- st_buffer(x = sites, dist = 200) #set buffer around sites to crop DEM
@@ -35,10 +36,12 @@ colnames(dem.df) = c("lon", "lat", "alt")
 #Read: Stream network
 streams <- st_read("data/spatial/stream_network/Konza_KingsCreek_network.shp")
 st_crs(streams) <- "+proj=utm +zone=14 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
-streams <- st_crop(x = streams, y = sites.buffer) #crop streams to buffer set around sites
+streams <- streams %>%
+  st_crop(x = ., y = sites.buffer) %>% #crop streams to buffer set around sites
+  filter(NAME == "Kings Creek")
 
 #Plot!
-sites$id <- factor(sites$id, levels = c("Sampling Sites","USGS Gage 06879650", "NEON Sampling Site", "NEON Tower"))
+sites$id <- factor(sites$id, levels = c("Sampling Sites", "Groundwater Wells", "USGS Gage 06879650", "NEON Sampling Site", "NEON Tower"))
 p1 <- 
   ggplot()+
   geom_raster(data = dem.df, aes(x = lon, y = lat, fill = alt), alpha = 0.5)+
@@ -48,11 +51,12 @@ p1 <-
   ggnewscale::new_scale_fill()+
   geom_sf(data = streams, color = "blue")+
   geom_sf(data = sites, aes(fill = id, shape = id), size=2)+
-  scale_shape_manual(values = c(21, 24, 22, 23))+
-  scale_fill_manual(values = c("#636363", "#636363", "#636363", "#636363"))+
+  scale_shape_manual(values = c(21, 25, 24, 22, 23))+
+  scale_fill_manual(values = c("#636363", "#636363", "#636363", "#636363", "#636363"))+
   labs(fill = "", shape = "")+
   labs(x = "", y = "")+
-  ggspatial::annotation_scale(location = 'bl')+
+  ggspatial::annotation_scale(location = "bl")+
+  ggspatial::annotation_north_arrow(location = "tr", height = unit(8, "mm"), width = unit(8, "mm"))+
   scale_x_continuous(expand = c(0,0), labels = function(x) paste0(x, '\u00B0', "W"))+
   scale_y_continuous(expand = c(0,0), labels = function(x) paste0(x, '\u00B0', "N"))+
   theme(strip.text = element_text(face = 'bold'), 
@@ -60,6 +64,7 @@ p1 <-
         axis.text.y = element_text(size = 8),
         legend.text = element_text(size = 8),
         legend.title = element_text(size = 8))
+ggsave(path = "figures/", "Fig1.png", dpi=300, width = 190, height = 110, units = "mm")
 
 #States map
 states <- map_data("state")
@@ -87,7 +92,7 @@ p2 <-
         axis.text.y=element_blank(), axis.ticks.y=element_blank())
 
 p2 + p1 + plot_layout(ncol = 2, widths = c(1,2)) + plot_annotation(tag_levels = "a")
-ggsave(path = "figures/", "Fig1.png", dpi=300, width = 190, height = 110, units = "mm")
+#ggsave(path = "figures/", "Fig1_Inset.png", dpi=300, width = 190, height = 110, units = "mm")
 
 
 
@@ -176,16 +181,5 @@ flow.accumulation.raster <- raster("data/spatial/site_output/fac.tif")
 pp.contributing.area <- raster::extract(x = flow.accumulation.raster,
                                         y = pp,
                                         method = "simple")
-pp$ContributingArea_ha <- pp.contributing.area * 1/10000
+pp$ContributingArea_ha <- (pp.contributing.area * 9.36261^2)* (1/10000)
 pp
-
-#Precip
-Precip <- as_tibble(read.csv("data/LTER/Konza_Precip.csv"))
-Precip <- Precip %>%
-  mutate(date = as_date(date)) %>%
-  mutate(year = year(date)) %>%
-  group_by(year) %>%
-  summarise(annual_precip_mm = sum(precip_mm))
-
-# average annual precip between 1982-2021
-print(average_annual_precip_mm <- mean(Precip$annual_precip_mm))

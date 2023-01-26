@@ -1,4 +1,4 @@
-#Fig S1. Random forest model to predict δ18O
+#Fig S5. Random forest model to predict δ18O
 library(viridis)
 library(party)
 library(patchwork)

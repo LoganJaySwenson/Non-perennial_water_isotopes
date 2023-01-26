@@ -19,11 +19,24 @@ p1 <-
   labs(x = "\U03B4\U00B9\U2078O (‰)", y = "d-excess (‰)")+
   labs(fill = "", shape = "")
 
+#Unpaired Wilcoxon rank sum test to see if the differences in medians of isotopic compositions between flowing vs. pooled reaches is equal to 0.
+#A p-value < 0.05 indicates a statistically significant difference.
+wilcox.test(AIMS_isotopes %>% filter(month == "Jul" & flowing == "y") %>% pull(d18OWater),
+            AIMS_isotopes %>% filter(month == "Jul" & flowing == "n") %>% pull(d18OWater), exact = F)
+
+wilcox.test(AIMS_isotopes %>% filter(month == "Aug" & flowing == "y") %>% pull(d18OWater),
+            AIMS_isotopes %>% filter(month == "Aug" & flowing == "n") %>% pull(d18OWater), exact = F)
+
 #Plot δ18O & flow state!
 AIMS_isotopes$flowing <- factor(AIMS_isotopes$flowing, levels = c("y", "n"))
 p2 <-
   ggplot(AIMS_isotopes, aes(month, d18OWater, fill = flowing))+
   geom_boxplot(width = 0.5, outlier.shape = 21, outlier.size = 2)+
+  annotate("text", x = 1.04, y = -5.50, label = paste("n =", count(subset(AIMS_isotopes, month == "Jun"))), size = 6/.pt)+
+  annotate("text", x = 1.88, y = -5.20, label = paste("n =", count(subset(AIMS_isotopes, month == "Jul" & flowing == "y"))), size = 6/.pt)+
+  annotate("text", x = 2.16, y = -4.80, label = paste("n =", count(subset(AIMS_isotopes, month == "Jul" & flowing == "n"))), size = 6/.pt)+
+  annotate("text", x = 2.88, y = -5.30, label = paste("n =", count(subset(AIMS_isotopes, month == "Aug" & flowing == "y"))), size = 6/.pt)+
+  annotate("text", x = 3.16, y = 0.5, label = paste("n =", count(subset(AIMS_isotopes, month == "Aug" & flowing == "n"))), size = 6/.pt)+
   labs(x = "", y = "\U03B4\U00B9\U2078O (‰)")+
   scale_fill_manual(values = c("#619CFF", "#F8766D"), name = "", labels = c("Flowing", "Pooled"))+
   scale_x_discrete(labels = c("June", "July", "August"))

@@ -25,21 +25,20 @@ AIMS_isotopes <- AIMS_isotopes %>%
 Q$s1Binned <- cut(Q$s1, breaks = c(seq(from = 36, to = 64, by = 4)))
 AIMS_isotopes$s1Binned <- cut(AIMS_isotopes$s1, breaks = c(seq(from = 36, to = 64, by = 4)))
 ggplot()+
+  #annotate("rect", xmin = as.Date(-Inf), xmax = as.Date(Inf), ymin = 38.06, ymax = 71.39, fill = "#636363", alpha = 0.05)+
   geom_smooth(data = Q, aes(date, s1,))+
-  geom_hline(yintercept = 54.96, linetype = "dashed", color = "#636363")+
-  #geom_hline(yintercept = 37.98, linetype = "dashed", color = "#636363")+
-  #geom_hline(yintercept = 71.72, linetype = "dashed", color = "#636363")+
+  geom_hline(yintercept = 54.35, linetype = "dashed", color = "#636363")+
   annotate("text", x = as.Date("2020-10-10"), y = 56.8, label = "FYW: 54.96%", size = 8/.pt, color = "#636363")+
   geom_point(data = Q, aes(date, s1, fill = s1Binned), color = 'black', pch = 21, size = 2.5)+
   scale_fill_viridis(direction = -1, discrete = T)+
-  #stat_summary(data = AIMS_isotopes, aes(date, s1),
-               #color = "black", 
-               #fill = "#E7315D",
-               #pch = 21,
-               #fun = mean,
-               #geom = "pointrange",
-               #fun.max = function(x) mean(x) + qt(.975, df = length(x)) * sd(x) / sqrt(length(x)),
-               #fun.min = function(x) mean(x) - qt(.975, df = length(x)) * sd(x) / sqrt(length(x)))+
+  stat_summary(data = AIMS_isotopes, aes(date, s1),
+               color = "black", 
+               fill = "#E7315D",
+               pch = 21,
+               fun = mean,
+               geom = "pointrange",
+               fun.max = function(x) mean(x) + qt(.975, df = length(x)) * sd(x) / sqrt(length(x)),
+               fun.min = function(x) mean(x) - qt(.975, df = length(x)) * sd(x) / sqrt(length(x)))+
   scale_y_continuous(limits = c(0, 80))+
   labs(x = "", y = "Streamwater ~3 months in age (%)")+
   labs(fill = "Streamwater\n< 3 months\nin age (%)")+

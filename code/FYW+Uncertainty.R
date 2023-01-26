@@ -146,6 +146,8 @@ upperinterval <- print(x + qt(0.975,df=n-1)*s/sqrt(n))
 ggplot()+
   geom_histogram(data = FYW_model, aes(x = FYW, y = ..density..), binwidth = 1, colour = "black", fill = "white")+
   geom_density(data = FYW_model, aes(FYW), alpha = .5)+ 
+  annotate("text", x = 25, y = 0.028, label = paste("Median:", round(median, digits = 2),"%"), size = 10/.pt)+
+  annotate("text", x = 25, y = 0.030, label = paste("95% confidence interval:", round(lowerinterval, digits = 2),"% to", round(upperinterval, digits = 2), "%"), size = 10/.pt)+
   labs(x = "Young water fraction (%)", y = "Count")+
   scale_x_continuous(expand = c(0,0))+
   scale_y_continuous(expand = expansion(mult = c(0,0.05)))+
