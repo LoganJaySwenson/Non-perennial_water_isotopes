@@ -25,7 +25,6 @@ AIMS_isotopes <- AIMS_isotopes %>%
 Q$s1Binned <- cut(Q$s1, breaks = c(seq(from = 36, to = 64, by = 4)))
 AIMS_isotopes$s1Binned <- cut(AIMS_isotopes$s1, breaks = c(seq(from = 36, to = 64, by = 4)))
 ggplot()+
-  #annotate("rect", xmin = as.Date(-Inf), xmax = as.Date(Inf), ymin = 38.06, ymax = 71.39, fill = "#636363", alpha = 0.05)+
   geom_smooth(data = Q, aes(date, s1,))+
   geom_hline(yintercept = 54.35, linetype = "dashed", color = "#636363")+
   annotate("text", x = as.Date("2020-10-10"), y = 56.8, label = "FYW: 54.96%", size = 8/.pt, color = "#636363")+
@@ -40,7 +39,7 @@ ggplot()+
                fun.max = function(x) mean(x) + qt(.975, df = length(x)) * sd(x) / sqrt(length(x)),
                fun.min = function(x) mean(x) - qt(.975, df = length(x)) * sd(x) / sqrt(length(x)))+
   scale_y_continuous(limits = c(0, 80))+
-  labs(x = "", y = "Streamwater ~3 months in age (%)")+
+  labs(x = "", y = "Proportion of streamwater less than 3 months in age (%)")+
   labs(fill = "Streamwater\n< 3 months\nin age (%)")+
   guides(fill = guide_legend(reverse=T))+
   scale_x_date(breaks=date_breaks("months"), labels=date_format("%b %y"))+

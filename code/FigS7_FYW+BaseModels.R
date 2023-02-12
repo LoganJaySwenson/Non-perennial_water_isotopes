@@ -1,5 +1,4 @@
-#FYW + Base model
-#Fig S2. Base model fit
+#Fig S7. FYW Base model fit!
 library(lubridate)
 library(scales)
 library(dataRetrieval)
@@ -118,4 +117,4 @@ ggplot()+
   theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.text=element_text(size=10),
         legend.position = c(0.922, 0.88),
         legend.background = element_rect(fill = "white", color = "black"))
-ggsave(path = "figures/", "FigS2.png", dpi=300, width = 190, height = 110, units = "mm")
+ggsave(path = "figures/", "FigS7.png", dpi=300, width = 190, height = 110, units = "mm")

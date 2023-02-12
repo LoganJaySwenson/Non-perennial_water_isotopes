@@ -23,7 +23,6 @@ sites <- as_tibble(sites) %>%
   st_as_sf(coords = c("long", "lat"), crs = 4326) %>%
   st_transform(crs = st_crs("+proj=utm +zone=14 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"))
 sites.buffer <- st_buffer(x = sites, dist = 200) #set buffer around sites to crop DEM
-#sites.buffer <- st_buffer(x = sites, dist = 200) #set buffer around streams to crop DEM
 
 #Read: Konza DEM
 dem.raster <- raster::raster("data/LTER/DEM/Konza_DEM_Buffer.tif")
@@ -92,7 +91,7 @@ p2 <-
         axis.text.y=element_blank(), axis.ticks.y=element_blank())
 
 p2 + p1 + plot_layout(ncol = 2, widths = c(1,2)) + plot_annotation(tag_levels = "a")
-#ggsave(path = "figures/", "Fig1_Inset.png", dpi=300, width = 190, height = 110, units = "mm")
+ggsave(path = "figures/", "Fig1_Inset.png", dpi=300, width = 190, height = 110, units = "mm")
 
 
 

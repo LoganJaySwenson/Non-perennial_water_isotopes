@@ -93,15 +93,27 @@ UpperEis4_6 <- UpperEis4_6 %>%
   mutate(id = "Upper Eis 4-6") %>%
   select(-c(Time, Date...Time))
 
+#Top of Cottonwood Limestone is 04M03
+sites <- as_tibble(read.csv("data/AIMS/AIMS_STIC_details.csv"))
+ref <- round(sites %>% filter(siteID == "04M03") %>% pull(Elevation_m), digits = 2)
+
+#Limestone/shale members
+limestones <- as_tibble(read.csv("data/LTER/Konza_GW_Well_Info.csv")) %>%
+  mutate(order = 1:21) %>%
+  arrange(-order) %>%
+  mutate(cumulative = cumsum(thickness_m),
+         top = cumulative + ref - 17.0,
+         bottom = top - thickness_m) %>%
+  filter(type == "Ls")
+
 #Plot!
 months <- c("Jun" = "June", "Jul" = "July", "Aug" = "August")
 AIMS_isotopes$month <- factor(AIMS_isotopes$month, levels = c( "Jun", "Jul", "Aug"))
 AIMS_isotopes$d18OWaterBinned <- cut(AIMS_isotopes$d18OWater, breaks = c(seq(-6.5, -4.5, 0.25), 0.2))
 AIMS_isotopes$flowing <- factor(AIMS_isotopes$flowing, levels = c("y", "n"))
 ggplot()+
-  annotate("rect", xmin = -Inf, xmax = Inf, ymin = min(UpperEis4_6$LEVEL), ymax = max(UpperEis4_6$LEVEL), fill = "#4DAF4A", alpha = 0.2)+
-  annotate("rect", xmin = -Inf, xmax = Inf, ymin = min(LowerEis4_6$LEVEL), ymax = max(LowerEis4_6$LEVEL), fill = "#F781BF", alpha = 0.2)+
-  annotate("rect", xmin = -Inf, xmax = Inf, ymin = min(Mor4_6$LEVEL), ymax = max(Mor4_6$LEVEL), fill = "#999999", alpha = 0.2)+
+  geom_rect(data = limestones, aes(ymax = top, ymin = bottom, xmax = Inf, xmin = -Inf), fill = "#999999", alpha = 0.2)+
+  ggnewscale::new_scale_fill()+
   geom_point(data = na.omit(AIMS_isotopes), aes(distance_m, Elevation_m, fill = d18OWaterBinned, shape = flowing), size=2)+
   facet_wrap(~month, labeller = as_labeller(months))+
   scale_fill_manual(values = c("#440154", "#46327e", "#365c8d", "#277f8e", "#1fa187", "#4ac16d", "#a0da39", "#fde725"))+
@@ -109,6 +121,7 @@ ggplot()+
   labs(x = "Distance to outlet (m)", y = "Elevation (m)")+
   labs(fill = expression(delta^{18}*"O (‰)"))+
   labs(shape = "")+
+  scale_y_continuous(limits = c(350,410), breaks = seq(350, 410, by = 10))+
   guides(fill=guide_legend(override.aes=list(shape=21)))+
   theme(strip.text = element_text(face = 'bold'))
-ggsave(path = "figures/", "Fig4_GroundwaterLevels.png", dpi=300, width = 190, height = 90, units = "mm")
+ggsave(path = "figures/", "Fig4.png", dpi=300, width = 190, height = 90, units = "mm")

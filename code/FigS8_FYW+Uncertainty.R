@@ -1,5 +1,4 @@
-#FYW + Uncertainty analysis
-#Fig S3. 95% confidence intervals & median
+#Fig S8. Uncertainty in FYW estimates!
 library(lubridate)
 library(scales)
 library(dataRetrieval)
@@ -152,4 +151,4 @@ ggplot()+
   scale_x_continuous(expand = c(0,0))+
   scale_y_continuous(expand = expansion(mult = c(0,0.05)))+
   theme(plot.margin=unit(c(5,5,5,5), "mm"))
-ggsave(path = "figures/", "FigS3.png", dpi=300, width = 190, height = 90, units = "mm")
+ggsave(path = "figures/", "FigS8.png", dpi=300, width = 190, height = 90, units = "mm")
