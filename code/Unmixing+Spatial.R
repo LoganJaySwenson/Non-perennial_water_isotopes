@@ -1,16 +1,15 @@
-#Bayesian Unmixing in headwaters!
-library(lubridate)
+# Bayesian model to estimate young water fractions in headwaters!
 library(isoWater)
+library(lubridate)
 library(tidyverse)
 
 set.seed(1)
 
-#Read: AIMS isotopes
-AIMS_isotopes <- read.csv("data/AIMS_isotopes_coordinates.csv")
-AIMS_isotopes <- as_tibble(AIMS_isotopes) %>%
+# Read: AIMS isotopes
+AIMS_isotopes <- read_csv("data/AIMS_isotopes_coordinates.csv") %>%
   mutate(date = ymd(date))
 
-#add columns to be filled with model results
+# add columns to be filled with model results
 AIMS_isotopes$s1 <- NA
 AIMS_isotopes$s2 <- NA
 AIMS_isotopes$s1_rhat <- NA
@@ -18,38 +17,36 @@ AIMS_isotopes$s2_rhat <- NA
 AIMS_isotopes$s1_n.eff <- NA
 AIMS_isotopes$s2_n.eff <- NA
 
-#EL slope & residual standard error
+# EL slope & residual standard error
 EL <- print(summary(lm(d2HWater ~ d18OWater, data = AIMS_isotopes)))
 slope = c(6.00, 0.55)
 
-#P δ18O timeseries
-P <- read.csv("data/NEON/NEON_isotopes.csv")
-P <- as_tibble(P) %>%
+# NEON precip δ18O timeseries
+precip_isotopes <- read_csv("data/NEON/NEON_isotopes.csv") %>%
   mutate(date = mdy(date)) %>%
   filter(type == "Precipitation") %>%
   filter(date >= "2018-11-01" & date <= "2021-12-31") %>% 
   mutate_if(is.numeric, round, digits = 2) %>%
   select(date, d18OWater, d2HWater)
 
-#P weights
-Precip <- read.csv("data/LTER/Konza_Precip.csv")
-Precip <- as_tibble(Precip) %>%
-  mutate(date = ymd(date))
+# Precip weights
+precip <- as_tibble(read.csv("data/LTER/Konza_Precip.csv"))
+precip$date <- as_date(precip$date)
 
-#add cumulative precipitation between sampling dates
-rows_match <- match(P$date, Precip$date)
-P$precip_sum_mm <- NA
+# add cumulative precipitation between sampling dates
+rows_match <- match(precip_isotopes$date, precip$date)
+precip_isotopes$precip_sum_mm <- NA
 for (i in 2:length(rows_match)){
   row_start_sum <- rows_match[i-1] + 1
   row_end_sum <- rows_match[i]
-  P$precip_sum_mm[i] <- sum(Precip$precip_mm[row_start_sum:row_end_sum])
+  precip_isotopes$precip_sum_mm[i] <- sum(precip$precip_mm[row_start_sum:row_end_sum])
 }
-P <- na.omit(P)
+precip_isotopes <- na.omit(precip_isotopes)
 
-#Run Bayesian unmixing!
+# Bayesian unmixing!
 system.time(for (i in 1:length(AIMS_isotopes$d18OWater)){
   
-  temp <- P[P$date <= AIMS_isotopes$date[i],]
+  temp <- precip_isotopes[precip_isotopes$date <= AIMS_isotopes$date[i],]
   
   s1 <- temp[temp$date >= AIMS_isotopes$date[i] - 90,]
   
@@ -102,5 +99,5 @@ AIMS_isotopes <- AIMS_isotopes %>%
   mutate(s1 = s1 * 100) %>% 
   mutate(s2 = s2 * 100)
 
-#Save results to csv
-write.csv(AIMS_isotopes, "data/AIMS_isotopes_results.csv", row.names = F)
+# Save results to csv
+write_csv(AIMS_isotopes, "data/AIMS_isotopes_results.csv")

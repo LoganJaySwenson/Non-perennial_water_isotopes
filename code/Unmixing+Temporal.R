@@ -1,13 +1,12 @@
-#Bayesian Unmixing at the outlet!
+# Bayesian model to estimate young water fractions at the outlet!
 library(lubridate)
 library(isoWater)
 library(tidyverse)
 
 set.seed(1)
 
-#Q δ18O timeseries
-Q <- read.csv("data/NEON/NEON_isotopes.csv")
-Q <- as_tibble(Q) %>%
+# NEON δ18O timeseries
+stream_isotopes <- read_csv("data/NEON/NEON_isotopes.csv") %>%
   filter(type == "Stream") %>%
   mutate(date = mdy(date)) %>%
   filter(date >= "2019-12-01" & date <= "2021-12-01") %>%
@@ -18,55 +17,53 @@ Q <- as_tibble(Q) %>%
   mutate_if(is.numeric, round, digits = 2) %>%
   ungroup()
 
-#add columns to be filled with model results
-Q$s1 <- NA
-Q$s2 <- NA
-Q$s1_rhat <- NA
-Q$s2_rhat <- NA
-Q$s1_n.eff <- NA
-Q$s2_n.eff <- NA
+# add columns to be filled with model results
+stream_isotopes$s1 <- NA
+stream_isotopes$s2 <- NA
+stream_isotopes$s1_rhat <- NA
+stream_isotopes$s2_rhat <- NA
+stream_isotopes$s1_n.eff <- NA
+stream_isotopes$s2_n.eff <- NA
 
-#P δ18O timeseries
-P <- read.csv("data/NEON/NEON_isotopes.csv")
-P <- as_tibble(P) %>%
+# same EL slope & residual standard error
+slope = c(6.00, 0.55)
+
+# NEON precip δ18O timeseries
+precip_isotopes <- read_csv("data/NEON/NEON_isotopes.csv") %>%
   mutate(date = mdy(date)) %>%
   filter(type == "Precipitation") %>%
   filter(date >= "2018-11-01" & date <= "2021-12-31") %>% 
   mutate_if(is.numeric, round, digits = 2) %>%
   select(date, d18OWater, d2HWater)
 
-#P weights
-Precip <- read.csv("data/LTER/Konza_Precip.csv")
-Precip <- as_tibble(Precip) %>%
-  mutate(date = ymd(date))
+# Precip weights
+precip <- as_tibble(read.csv("data/LTER/Konza_Precip.csv"))
+precip$date <- as_date(precip$date)
 
-#same EL slope & residual standard error
-slope = c(6.00, 0.55)
-
-#add cumulative precipitation between sampling dates
-rows_match <- match(P$date, Precip$date)
-P$precip_sum_mm <- NA
+# add cumulative precipitation between sampling dates
+rows_match <- match(precip_isotopes$date, precip$date)
+precip_isotopes$precip_sum_mm <- NA
 for (i in 2:length(rows_match)){
   row_start_sum <- rows_match[i-1] + 1
   row_end_sum <- rows_match[i]
-  P$precip_sum_mm[i] <- sum(Precip$precip_mm[row_start_sum:row_end_sum])
+  precip_isotopes$precip_sum_mm[i] <- sum(precip$precip_mm[row_start_sum:row_end_sum])
 }
-P <- na.omit(P)
+precip_isotopes <- na.omit(precip_isotopes)
 
-#Run Bayesian unmixing!
-system.time(for (i in 1:length(Q$d18OWater)){
+# Bayesian unmixing!
+system.time(for (i in 1:length(stream_isotopes$d18OWater)){
   
-  temp <- P[P$date <= Q$date[i],]
+  temp <- precip_isotopes[precip_isotopes$date <= stream_isotopes$date[i],]
   
-  s1 <- temp[temp$date >= Q$date[i] - 90,]
+  s1 <- temp[temp$date >= stream_isotopes$date[i] - 90,]
   
   if(nrow(s1) < 3){
-    Q$s1[i] <- NA
-    Q$s2[i] <- NA
-    Q$s1_rhat[i] <- NA
-    Q$s2_rhat[i] <- NA
-    Q$s1_n.eff[i] <- NA
-    Q$s2_n.eff[i] <- NA
+    stream_isotopes$s1[i] <- NA
+    stream_isotopes$s2[i] <- NA
+    stream_isotopes$s1_rhat[i] <- NA
+    stream_isotopes$s2_rhat[i] <- NA
+    stream_isotopes$s1_n.eff[i] <- NA
+    stream_isotopes$s2_n.eff[i] <- NA
     
   } else {
     s1_H <- sum(s1$d2HWater*s1$precip_sum_mm)/sum(s1$precip_sum_mm)
@@ -75,7 +72,7 @@ system.time(for (i in 1:length(Q$d18OWater)){
     s1_Osd <- sd(s1$d18OWater)
     s1_HOc <- cov(s1$d2HWater, s1$d18OWater)
     
-    s2 <- temp[temp$date < Q$date[i] - 90,]
+    s2 <- temp[temp$date < stream_isotopes$date[i] - 90,]
     
     s2_H <- sum(s2$d2HWater*s2$precip_sum_mm)/sum(s2$precip_sum_mm)
     s2_O <- sum(s2$d18OWater*s2$precip_sum_mm)/sum(s2$precip_sum_mm)
@@ -91,23 +88,23 @@ system.time(for (i in 1:length(Q$d18OWater)){
     
     sources = iso(temp$H, temp$O, temp$Hsd, temp$Osd, temp$HOc)
     
-    obs <- iso(Q$d2HWater[i], Q$d18OWater[i], 0.5, 0.1, 0.026)
+    obs <- iso(stream_isotopes$d2HWater[i], stream_isotopes$d18OWater[i], 0.5, 0.1, 0.026)
     
     mix = mixSource(obs, sources, slope, ngens = 2e5, shp = 1)
     
-    Q$s1[i] <- mix[["summary"]][4,1]
-    Q$s2[i] <- mix[["summary"]][5,1]
-    Q$s1_rhat[i] <- mix[["summary"]][4,8]
-    Q$s2_rhat[i] <- mix[["summary"]][5,8]
-    Q$s1_n.eff[i] <- mix[["summary"]][4,9]
-    Q$s2_n.eff[i] <- mix[["summary"]][5,9]
+    stream_isotopes$s1[i] <- mix[["summary"]][4,1]
+    stream_isotopes$s2[i] <- mix[["summary"]][5,1]
+    stream_isotopes$s1_rhat[i] <- mix[["summary"]][4,8]
+    stream_isotopes$s2_rhat[i] <- mix[["summary"]][5,8]
+    stream_isotopes$s1_n.eff[i] <- mix[["summary"]][4,9]
+    stream_isotopes$s2_n.eff[i] <- mix[["summary"]][5,9]
     
   }
 })
 
-Q <- Q %>%
+stream_isotopes <- stream_isotopes %>%
   mutate(s1 = s1 * 100) %>%
   mutate(s2 = s2 * 100)
 
-#Save to results to csv
-write.csv(Q, "data/Q_isotopes_results.csv", row.names = F)
+# Save to results to csv
+write_csv(stream_isotopes, "data/NEON_isotopes_results.csv")

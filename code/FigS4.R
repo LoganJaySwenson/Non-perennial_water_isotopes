@@ -1,44 +1,46 @@
-#Fig S4. Spatial variation in δ18O during the summer dry-down period with limestone units.
-library(lubridate)
+# Fig S4. Spatial variation in δ18O during the summer dry-down period with limestone units.
 library(sf)
 library(raster)
 library(viridis)
+library(lubridate)
 library(tidyverse)
 
-#Publication theme
+# Publication theme
 source("code/Theme+Settings.R")
 
-#Read: AIMS isotopes
-AIMS_isotopes <- as_tibble(read.csv("data/AIMS_isotopes_coordinates.csv"))
-AIMS_isotopes <- st_as_sf(x = AIMS_isotopes, coords = c("long", "lat"), crs = 4326)
+crs <- "+proj=utm +zone=14 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
 
-#Read: Stream network
+# Read: AIMS isotopes
+AIMS_isotopes <- read_csv("data/AIMS_isotopes_coordinates.csv") %>%
+  st_as_sf(coords = c("long", "lat"), crs = 4326)
+
+# Read: Stream network
 streams <- st_read("data/spatial/stream_network/Konza_stream_network.shp")
 st_crs(streams) <- "+proj=utm +zone=14 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
+
 streams_buffer <- st_buffer(x = streams, dist = 200)
 
-#Top of Cottonwood Limestone is 04M03
-sites <- as_tibble(read.csv("data/AIMS/AIMS_STIC_details.csv"))
+# Top of Cottonwood Limestone is 04M03 (field notes)
+sites <- read_csv("data/AIMS/AIMS_STIC_details.csv")
 ref <- round(sites %>% filter(siteID == "04M03") %>% pull(Elevation_m), digits = 2)
 
-#Limestone/shale members
+# Limestone/shale members
 limestones <- as_tibble(read.csv("data/LTER/Konza_GW_Well_Info.csv")) %>%
   mutate(order = 1:21) %>%
   arrange(-order) %>%
   mutate(cumulative = cumsum(thickness_m),
          top = cumulative + ref - 17.0,
          bottom = top - thickness_m) %>%
-  filter(type == "Ls") %>%
-  print(., n=11)
+  filter(type == "Ls") 
 
-#Read: Konza DEM
-dem.raster <- raster::raster("data/LTER/DEM/Konza_DEM_Buffer.tif")
-dem.raster <- crop(x = dem.raster, y = streams_buffer) #crop DEM to buffer set around sites
-dem.m  <-  rasterToPoints(dem.raster)
-dem.df <-  data.frame(dem.m)
-colnames(dem.df) = c("lon", "lat", "elevation")
-dem.df <- dem.df %>%
-  mutate(elevation.binned = case_when(
+# Read: Konza DEM
+dem <- raster::raster("data/LTER/DEM/Konza_DEM_Buffer.tif") 
+dem <- crop(x = dem, y = streams_buffer) #crop DEM to buffer set around sites
+
+dem_df <- as_tibble(rasterToPoints(dem)) 
+colnames(dem_df) = c("lon", "lat", "elevation")
+dem_df <- dem_df %>%
+  mutate(elevation_binned = case_when(
     elevation <= 429.02 & elevation >= 423.47 ~ "Florence Ls",
     elevation <= 416.52 & elevation >= 412.57 ~ "Kinney Ls",
     elevation <= 412.57 & elevation >= 405.80 ~ "Wymore Ls",
@@ -50,14 +52,13 @@ dem.df <- dem.df %>%
     elevation <= 369.07 & elevation >= 368.31 ~ "Morrill Ls",
     elevation <= 364.96 & elevation >= 363.21 ~ "Cottonwood Ls",
     elevation <= 355.06 & elevation >= 350.82 ~ "Neva Ls",)) %>%
-  drop_na(elevation.binned)
+  drop_na(elevation_binned)
 
-#Plot!
+# Plot!
 months <- c("Jun" = "June", "Jul" = "July", "Aug" = "August")
 AIMS_isotopes$month <- factor(AIMS_isotopes$month, levels = c( "Jun", "Jul", "Aug"))
 AIMS_isotopes$d18OWaterBinned <- cut(AIMS_isotopes$d18OWater, breaks = c(seq(-6.5, -4.5, 0.25), 0.2))
-ggplot(dem.df)+
-  #geom_raster(aes(x = lon, y = lat, fill = elevation.binned))+
+ggplot(dem_df)+
   geom_raster(aes(x = lon, y = lat), fill = "#FEF3A3")+
   guides(fill = "none")+
   ggnewscale::new_scale_fill()+
