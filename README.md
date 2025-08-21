@@ -1,5 +1,6 @@
-Analysis of water age and source during dry-down of a non-perennial stream at the Konza Prairie, KS. 
+Analysis of water age during dry-down of a non-perennial stream at the Konza Prairie, KS.
 
-Data & code for a manuscript submitted to Water Resources Research.
+Data \& code for a manuscript submitted to Water Resources Research.
 
-See a pre-print our paper: https://doi.org/10.31223/X55S99
+Paper: https://doi.org/10.1029/2023WR034623
+
