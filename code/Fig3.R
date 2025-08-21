@@ -34,4 +34,4 @@ ggplot()+
   theme(axis.text.x=element_blank(), axis.ticks.x=element_blank(), axis.text.y=element_blank(), axis.ticks.y=element_blank(), 
         strip.text = element_text(face = 'bold'))
 ggsave(path = "figures/", "Fig3.png", dpi=300, width = 190, height = 90, units = "mm")
-ggsave(path = "figures/", "Figure3.pdf", dpi=300, width = 190, height = 50, units = "mm")
+ggsave(path = "figures/", "Figure3.pdf", dpi=300, width = 190, height = 60, units = "mm")

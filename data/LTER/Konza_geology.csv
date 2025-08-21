@@ -1,0 +1,22 @@
+unit,type,thickness_m,top_elevation_m,bottom_elevation_m
+Salem Point Sh,Sh,2.83,350.82,347.99
+Neva Ls,Ls,4.24,355.06,350.82
+Eskridge Sh,Sh,8.15,363.21,355.06
+Cottonwood Ls,Ls,1.75,364.96,363.21
+Florena Sh,Sh,3.35,368.31,364.96
+Morrill Ls,Ls,0.76,369.07,368.31
+Stearns Sh,Sh,4.15,373.22,369.07
+Eiss Ls,Ls,1.94,375.16,373.22
+Hooser Sh,Sh,2.18,377.34,375.16
+Middleburg Ls,Ls,0.98,378.32,377.34
+Easly Creek Sh,Sh,4.36,382.68,378.32
+Crouse Ls,Ls,2.44,385.12,382.68
+Blue Rapids Sh,Sh,6.11,391.23,385.12
+Funston Ls,Ls,2.85,394.08,391.23
+Speiser Sh,Sh,4.36,398.44,394.08
+Threemile Ls,Ls,2.48,400.92,398.44
+Havensville Sh,Sh,4.88,405.8,400.92
+Wymore Ls,Ls,6.77,412.57,405.8
+Kinney Ls,Ls,3.95,416.52,412.57
+Blue Springs Sh,Sh,6.95,423.47,416.52
+Florence Ls,Ls,5.55,429.02,423.47

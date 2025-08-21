@@ -120,4 +120,5 @@ p3 <-
 
 p3 + p1 + p2 + plot_layout(nrow = 3)
 ggsave(path = "figures/", "Fig2.png", dpi=300, width = 190, height = 190, units = "mm")
+ggsave(path = "figures/", "Fig2.svg", dpi=300, width = 190, height = 190, units = "mm")
 ggsave(path = "figures/", "Figure2.pdf", dpi=300, width = 190, height = 190, units = "mm")
