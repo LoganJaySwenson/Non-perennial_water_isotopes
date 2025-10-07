@@ -144,6 +144,7 @@ ggplot()+
 # p-value < 0.05 indicates a significant difference.
 
 pairwise_t <- list()
+pairwise_t_adjusted <- list()
 
 for (p in seq_along(priors)) {
   
@@ -151,7 +152,8 @@ for (p in seq_along(priors)) {
   
   t <- pairwise.t.test(
     spatial_prior$s1,
-    spatial_prior$month
+    spatial_prior$month,
+    p.adjust.method = "bonferroni"
   )
   
   pairwise_t[[p]] <- tibble(
@@ -163,9 +165,35 @@ for (p in seq_along(priors)) {
     t3_pval = t$p.value["Aug", "Jun"],
     t3_significance = if_else(t3_pval < 0.05, T, F)
   )
+  
+  # model FYW with AR(1)
+  model_ar1 <- nlme::gls(s1 ~ month, 
+                         data = spatial_prior,
+                         correlation = nlme::corAR1(form = ~1 | siteID))
+  
+  # adjusted means, se, confidence intervals, etc. accouting for time correlation
+  em <- emmeans::emmeans(model_ar1, ~month)
+  
+  # pairwise t-test on adjusted distributions
+  # returns emmGrid object
+  t <- pairs(em, adjust="bonferroni") %>% 
+    as.data.frame() %>% 
+    tibble()
+  
+  pairwise_t_adjusted[[p]] <- tibble(
+    prior = priors[p],
+    t1_pval = t$p.value[t$contrast == "Jun - Jul"],
+    t1_significance = t$p.value[t$contrast == "Jun - Jul"] < 0.05,
+    t2_pval = t$p.value[t$contrast == "Jul - Aug"],
+    t2_significance = t$p.value[t$contrast == "Jul - Aug"] < 0.05,
+    t3_pval = t$p.value[t$contrast == "Jun - Aug"],
+    t3_significance = t$p.value[t$contrast == "Jun - Aug"] < 0.05
+  )
+  
 }
 
 pairwise_t <- bind_rows(pairwise_t)
+pairwise_t_adjusted <- bind_rows(pairwise_t_adjusted)
 
 pp <- list()
 
@@ -175,6 +203,7 @@ for (i in seq_along(priors)) {
   spatial_stats <- filter(spatial_summary, prior == priors[i])
   
   t <- filter(pairwise_t, prior == priors[i])
+  #t <- filter(pairwise_t_adjusted, prior == priors[i])
   
   format_p <- function(pval, sig) {
     pval_str <- format(pval, scientific = T, digits = 2)
@@ -193,7 +222,9 @@ for (i in seq_along(priors)) {
   
   p <- ggplot() +
     geom_boxplot(data = spatial_prior, aes(x = month, y = s1), fill = "#BBBBBB", width = 0.5, outlier.shape = 21, outlier.size = 2) +
-    annotate("richtext", x = 0.5, y = -Inf, label = label,
+    stat_summary(data = spatial_prior, aes(x = month, y = s1), 
+                 fun = mean, geom = "point", shape = 23, size = 3, fill = "#AA3377") +
+    annotate("richtext", x = 0.4, y = -Inf, label = label,
              hjust = 0, vjust = 0, size = 9/.pt,
              fill = "transparent", label.color = NA,
              color = "#373737", label.padding = unit(0.5, "lines")) +
@@ -208,5 +239,8 @@ for (i in seq_along(priors)) {
 }
 
 plot_grid(plotlist = pp, nrow = 2, ncol = 2)
-# ggsave(path = "figures/", "C3.png", dpi=300, width = 150, height = 150, units = "mm")
-# ggsave(path = "figures/", "C3.pdf", dpi=300, width = 150, height = 150, units = "mm")
+ggsave(path = "figures/", "C3.png", dpi=300, width = 150, height = 150, units = "mm")
+ggsave(path = "figures/", "C3.pdf", dpi=300, width = 150, height = 150, units = "mm")
+
+#ggsave(path = "figures/", "C3_adjusted.png", dpi=300, width = 150, height = 150, units = "mm")
+#ggsave(path = "figures/", "C3_adjusted.pdf", dpi=300, width = 150, height = 150, units = "mm")
