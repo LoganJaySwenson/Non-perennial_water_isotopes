@@ -1,124 +1,114 @@
 # Fig 2. Konza Prairie conditions for 2021 Water Year
-library(scales)
 library(patchwork)
-library(lubridate)
 library(tidyverse)
 
-# Publication theme
-source("code/Theme+Settings.R")
+source(file.path("code", "theme.R"))
 
-date_start <- as.Date("2020-10-01")
-date_end <- as.Date("2021-09-30")
-
-# Read: Streamflow at Kings Creek (USGS 06879650), Konza Prairie, KS
-Flow <- dataRetrieval::readNWISdv(siteNumber = "06879650", parameterCd = "00060", startDate = "", endDate = "") %>%
-  dataRetrieval::renameNWISColumns() %>%
-  rename_with(.cols = everything(), tolower) %>%
-  filter(date >= date_start & date <= date_end) %>%
-  mutate(flow = (flow * 0.028316847)) #cfs to metric
-
-# Set minimum for plots
 min_q <- 0.001
-Flow$flow_forlog <- Flow$flow
-Flow$flow_forlog[Flow$flow_forlog < min_q] <- min_q
+start <- as.Date("2020-10-01")
+end <- as.Date("2021-09-30")
 
-# Plot!
-p1 <-
-  ggplot()+
-  geom_vline(xintercept = as.Date("2021-06-07"), color = "#E41A1C", linetype = "dashed")+
-  geom_vline(xintercept = as.Date("2021-07-13"), color = "#E41A1C", linetype = "dashed")+
-  geom_vline(xintercept = as.Date("2021-08-09"), color = "#E41A1C", linetype = "dashed")+
-  geom_line(data = Flow, aes(date, flow_forlog), color = "#377EB8")+
-  labs(x = "", y = "Discharge (m\U00B3/s)")+
-  labs(color = "")+
-  scale_x_date(expand = c(0,0), limit=c(as.Date("2020-10-01"),as.Date("2021-09-30")),
-               breaks=date_breaks("months"), labels=date_format("%b %y"))+
-  scale_y_log10(
-                breaks = trans_breaks("log10", function(x) 10^x),
-                labels = trans_format("log10", math_format(10^.x)),
-                limits = c(0.001, 10),
-                expand = c(0,0)) +
-  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+# Precip at HQ weather station
+precip <- file.path("data", "LTER", "LTER_HQ_weather_station.csv") %>%
+  read_csv(show_col_types = F, col_select = c(siteID, date, precip_mm)) %>%
+  filter(date >= start & date <= end) 
 
-# Read: GW levels
-Mor3_5 <- read_csv("data/LTER/GW_Levels_3-5Mor.csv", show_col_types=F) %>%
-  rename_with(.cols = everything(), tolower) %>%
-  mutate(date = mdy(date), 
-         id = "Mor 3-5") %>%
-  filter(date >= date_start & date <= date_end) %>%
-  select(date, id, level)
+# Streamflow at USGS 06879650
+flow <- file.path("data", "USGS", "USGS_06879650.csv") %>% 
+  read_csv(show_col_types = F) %>% 
+  filter(date >= start & date <= end) 
 
-Mor3_5_1 <- read_csv("data/LTER/GW_Levels_3-5-1Mor.csv", show_col_types=F) %>%
-  rename_with(.cols = everything(), tolower) %>%
-  mutate(date = mdy(date), 
-         id = "Mor 3-5-1") %>%
-  filter(date >= date_start & date <= date_end) %>%
-  select(date, id, level)
+water_levels <- file.path("data", "LTER", "LTER_4-6wells.csv") %>% 
+  read_csv(show_col_types = F) %>% 
+  mutate(
+    siteID = factor(siteID, levels = c("Upper Eis 4-6", "Lower Eis 4-6", "Mor 4-6"))
+  ) %>% 
+  filter(date >= start & date <= end) 
 
-Mor4_6 <- read_csv("data/LTER/GW_Levels_4-6Mor.csv", show_col_types=F) %>%
-  rename_with(.cols = everything(), tolower) %>%
-  mutate(date = mdy(date), 
-         id = "Mor 4-6") %>%
-  filter(date >= date_start & date <= date_end) %>%
-  select(date, id, level)
-
-LowerEis4_6 <- read_csv("data/LTER/GW_Levels_4-6Eis1.csv", show_col_types=F) %>%
-  rename_with(.cols = everything(), tolower) %>%
-  mutate(date = mdy(date), 
-         id = "Lower Eis 4-6") %>%
-  filter(date >= date_start & date <= date_end) %>%
-  select(date, id, level)
-
-UpperEis4_6 <- read_csv("data/LTER/GW_Levels_4-6Eis2.csv", show_col_types=F) %>%
-  rename_with(.cols = everything(), tolower) %>%
-  mutate(date = mdy(date), 
-         id = "Upper Eis 4-6") %>%
-  filter(date >= date_start & date <= date_end) %>%
-  select(date, id, level)
-
-# GW levels
-GW_Levels <- bind_rows(Mor4_6, LowerEis4_6, UpperEis4_6)
-
-# Plot!
-GW_Levels$id <- factor(GW_Levels$id, levels = c("Upper Eis 4-6", "Lower Eis 4-6", "Mor 4-6"))
-p2 <-
-  ggplot()+
-  geom_vline(xintercept = as.Date("2021-06-07"), color = "#E41A1C", linetype = "dashed")+
-  geom_vline(xintercept = as.Date("2021-07-13"), color = "#E41A1C", linetype = "dashed")+
-  geom_vline(xintercept = as.Date("2021-08-09"), color = "#E41A1C", linetype = "dashed")+
-  geom_line(data = GW_Levels, aes(date, level, color = id))+
-  labs(x = "", y = "Groundwater level (m.a.s.l)")+
-  scale_color_manual(values = c("#4DAF4A", "#F781BF", "#999999"), name = "")+
-  annotate("text", x = as.Date("2020-10-20"), y = 371.2, label = "Upper Eiss", size = 10/.pt, color = "#4DAF4A")+
-  annotate("text", x = as.Date("2020-10-20"), y = 369.4, label = "Lower Eiss", size = 10/.pt, color = "#F781BF")+
-  annotate("text", x = as.Date("2020-10-13"), y = 364.2, label = "Morrill", size = 10/.pt, color = "#999999")+
-  guides(color = "none")+
-  scale_x_date(expand = c(0,0), limit=c(as.Date("2020-10-01"),as.Date("2021-09-30")),
-               breaks=date_breaks("months"), labels=date_format("%b %y"))+
-  scale_y_continuous(breaks = c(364, 366, 368, 370, 372))+
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
-
-# Read: Precip at Konza HQ
-Precip <- read_csv("data/LTER/Konza_Precip.csv") %>%
-  filter(date >= date_start & date <= date_end) %>%
-  mutate(date = ymd(date))
-
-# Plot!
-p3 <-
-  ggplot()+
-  geom_col(data = Precip, aes(date, precip_mm), color = "#984EA3")+
-  geom_vline(xintercept = as.Date("2021-06-07"), color = "#E41A1C", linetype = 'dashed')+
-  geom_vline(xintercept = as.Date("2021-07-13"), color = "#E41A1C", linetype = 'dashed')+
-  geom_vline(xintercept = as.Date("2021-08-09"), color = "#E41A1C", linetype = 'dashed')+
+p1 = ggplot()+
+  geom_col(data = precip, aes(date, precip_mm), color = "#984EA3")+
+  geom_vline(xintercept = as.Date("2021-06-07"), color = "#E7315D", linetype = "longdash")+
+  geom_vline(xintercept = as.Date("2021-07-13"), color = "#E7315D", linetype = "longdash")+
+  geom_vline(xintercept = as.Date("2021-08-09"), color = "#E7315D", linetype = "longdash")+
   labs(x = "", y = "Precipitation (mm/d)")+
-  labs(color = "")+
-  scale_x_date(expand = c(0,0), limit=c(as.Date("2020-10-01"),as.Date("2021-09-30")),
-               breaks=date_breaks("months"), labels=date_format("%b %y"))+
-  scale_y_continuous(expand = expansion(mult = c(0,0.05)))+
-  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+  scale_x_date(
+    expand = c(0, 0),
+    breaks = scales::date_breaks("months"), 
+    labels = scales::date_format("%b %y")
+    )+
+  scale_y_continuous(
+    expand = expansion(mult = c(0, 0.05))
+  )+
+  theme(
+    axis.title = element_text(size = 11),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank()
+  )
 
-p3 + p1 + p2 + plot_layout(nrow = 3)
-ggsave(path = "figures/", "Fig2.png", dpi=300, width = 190, height = 190, units = "mm")
-ggsave(path = "figures/", "Fig2.svg", dpi=300, width = 190, height = 190, units = "mm")
-ggsave(path = "figures/", "Figure2.pdf", dpi=300, width = 190, height = 190, units = "mm")
+p2 = ggplot()+
+  geom_line(data = flow, aes(date, if_else(flow_m3s < min_q, min_q, flow_m3s)), color = "#377EB8", lwd=0.7)+
+  geom_vline(xintercept = as.Date("2021-06-07"), color = "#E7315D", linetype = "longdash")+
+  geom_vline(xintercept = as.Date("2021-07-13"), color = "#E7315D", linetype = "longdash")+
+  geom_vline(xintercept = as.Date("2021-08-09"), color = "#E7315D", linetype = "longdash")+
+  labs(x = "", y = expression(Streamflow ~ (m^3*"/"*s)))+
+  scale_x_date(
+    expand = c(0, 0),
+    breaks = scales::date_breaks("months"), 
+    labels = scales::date_format("%b %y")
+    )+
+  scale_y_log10(
+    expand = c(0,0),
+    limits = c(0.001, 10),
+    labels = scales::trans_format("log10", scales::math_format(10^.x)),
+    )+
+  annotation_logticks(sides = "l")+
+  theme(
+    axis.title = element_text(size = 11),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank()
+  )
+
+p3 = ggplot()+
+  geom_line(data = water_levels, aes(datetime, water_level_masl, color = siteID), lwd=0.5)+
+  geom_vline(xintercept = as.Date("2021-06-07"), color = "#E7315D", linetype = "longdash")+
+  geom_vline(xintercept = as.Date("2021-07-13"), color = "#E7315D", linetype = "longdash")+
+  geom_vline(xintercept = as.Date("2021-08-09"), color = "#E7315D", linetype = "longdash")+
+  annotate("text", as.Date("2020-10-02"), 371.2, label = "Upper Eiss", color = "#4DAF4A", size = 10/.pt, hjust=0)+
+  annotate("text", as.Date("2020-10-02"), 369.4, label = "Lower Eiss", color = "#F781BF", size = 10/.pt, hjust=0)+
+  annotate("text", as.Date("2020-10-02"), 364.2, label = "Morrill", color = "#999999", size = 10/.pt, hjust=0)+
+  labs(x = "", y = "Groundwater level (m.a.s.l)")+
+  scale_color_manual(
+    name = "",
+    values = c(
+      "Upper Eis 4-6" = "#4DAF4A",
+       "Lower Eis 4-6" = "#F781BF",
+       "Mor 4-6" = "#999999"
+      ),
+    labels = c(
+      "Upper Eis 4-6" = "Upper Eiss",
+      "Lower Eis 4-6" = "Lower Eiss",
+      "Mor 4-6" = "Morrill"
+    )
+  )+
+  guides(color = "none")+
+  scale_x_date(
+    expand = c(0, 0),
+    breaks = seq(as.Date("2020-11-01"),
+                 max(water_levels$datetime),
+                 by = "1 month"),
+    labels = scales::date_format("%b %Y")
+  )+
+  scale_y_continuous(
+    breaks = seq(364, 372, 2)
+  )+
+  theme(
+    axis.title = element_text(size = 11),
+    legend.position = "bottom",
+    axis.text.x = element_text(angle=45, hjust=1)
+    
+  )
+
+pp <- p1 / p2 / p3
+pp
+
+ggsave(file.path("figures", "Fig2.png"), dpi=300, width=190, height=190, units="mm")

@@ -1,46 +1,69 @@
-# Fig 5. Variation in δ18O with d-excess & flow state
+# Fig 5. Variation in δ18O with d-excess & flow state 
 library(patchwork)
-library(lubridate)
 library(tidyverse)
 
-# Publication theme
-source("code/Theme+Settings.R")
+source(file.path("code", "theme.R"))
 
-# Read: AIMS isotopes
-AIMS_isotopes <- read_csv("data/AIMS_isotopes_RF.csv") %>%
-  select(1:18)
+AIMS_isotopes <- file.path("data", "AIMS", "AIMS_isotopes.csv") %>% 
+  read_csv(show_col_types = F) %>% 
+  mutate(
+    month = factor(month, levels = 6:8, labels = c("June", "July", "August")),
+    flowing = factor(flowing, levels = c(T,F), labels = c("Flowing", "Pooled"))
+  )
 
-# Plot δ18O & d-excess
-AIMS_isotopes$month <- factor(AIMS_isotopes$month, levels = c( "Jun", "Jul", "Aug"))
-p1 <-
-  ggplot()+
-  geom_point(data = AIMS_isotopes, aes(d18OWater, dexcess, fill = month), color= 'black', pch=21, size=2)+
-  scale_fill_manual(values = c('#0082c8', '#3cb44b', '#e6194b'), labels = c("June", "July", "August"))+
-  labs(x = expression(delta^{18}*"O (‰)"), y = "d-excess (‰)")+
-  labs(fill = "", shape = "")
+p1 = ggplot()+
+  geom_point(data = AIMS_isotopes, aes(d18O, dexcess, fill = month), color = "#373737", pch=21, size=2.5)+
+  scale_fill_manual(
+    name = "",
+    values = c(
+      "June" = "#0082C8",
+      "July" = "#3CB44B",
+      "August" = "#E6194B"
+    )
+  )+
+  labs(x = expression(delta^{18}*"O (‰)"), y = "d-excess (‰)")
 
 # Unpaired Wilcoxon rank sum test to see if the differences in medians of isotopic signatures between flowing vs. pooled reaches is equal to 0.
-# p-value < 0.05 indicates a significant difference.
-wilcox.test(AIMS_isotopes %>% filter(month == "Jul" & flowing == "y") %>% pull(d18OWater),
-            AIMS_isotopes %>% filter(month == "Jul" & flowing == "n") %>% pull(d18OWater), exact = F)
+wilcox <- AIMS_isotopes %>%
+  group_by(month) %>%
+  summarise(
+    num_flowing = sum(flowing == "Flowing"),
+    num_pooled  = sum(flowing == "Pooled"),
+    median_flowing = median(d18O[flowing == "Flowing"], na.rm=T),
+    median_pooled  = median(d18O[flowing == "Pooled"],  na.rm=T),
+    p_value = if (num_flowing > 0 & num_pooled > 0) {
+      wilcox.test(
+        d18O[flowing == "Flowing"],
+        d18O[flowing == "Pooled"],
+        exact=F
+      )$p.value
+    } else {
+      NA
+    },
+    .groups = "drop"
+  )
 
-wilcox.test(AIMS_isotopes %>% filter(month == "Aug" & flowing == "y") %>% pull(d18OWater),
-            AIMS_isotopes %>% filter(month == "Aug" & flowing == "n") %>% pull(d18OWater), exact = F)
+labels <- AIMS_isotopes %>%
+  group_by(month, flowing) %>%
+  summarise(
+    n = n(),
+    y = max(d18O, na.rm = T) + 0.2,
+    .groups = "drop"
+  ) %>%
+  mutate(label = paste("n =", n))
 
-# Plot δ18O & flow state
-AIMS_isotopes$flowing <- factor(AIMS_isotopes$flowing, levels = c("y", "n"))
-p2 <-
-  ggplot(AIMS_isotopes, aes(month, d18OWater, fill = flowing))+
-  geom_boxplot(width = 0.5, outlier.shape = 21, outlier.size = 2)+
-  annotate("text", x = 1.04, y = -5.50, label = paste("n =", count(subset(AIMS_isotopes, month == "Jun"))), size = 6/.pt)+
-  annotate("text", x = 1.88, y = -5.20, label = paste("n =", count(subset(AIMS_isotopes, month == "Jul" & flowing == "y"))), size = 6/.pt)+
-  annotate("text", x = 2.16, y = -4.80, label = paste("n =", count(subset(AIMS_isotopes, month == "Jul" & flowing == "n"))), size = 6/.pt)+
-  annotate("text", x = 2.88, y = -5.30, label = paste("n =", count(subset(AIMS_isotopes, month == "Aug" & flowing == "y"))), size = 6/.pt)+
-  annotate("text", x = 3.16, y = 0.5, label = paste("n =", count(subset(AIMS_isotopes, month == "Aug" & flowing == "n"))), size = 6/.pt)+
+p2 = ggplot()+
+  geom_boxplot(data = AIMS_isotopes, aes(month, d18O, fill = flowing), width=0.5, outlier.shape=21, outlier.size=2.5, position = position_dodge(width = 0.7))+
+  geom_text(data = labels, aes(month, y, label = label, group = flowing), position = position_dodge(width = 0.7), size = 8/.pt, vjust = 0)+
   labs(x = "", y = expression(delta^{18}*"O (‰)"))+
-  scale_fill_manual(values = c("#619CFF", "#F8766D"), name = "", labels = c("Flowing", "Pooled"))+
-  scale_x_discrete(labels = c("June", "July", "August"))
+  scale_fill_manual(
+    name = "",
+    values = c(
+      "Flowing" = "#619CFF",
+      "Pooled" = "#F8766D"
+    )
+  )
 
-p1 + p2 + plot_annotation(tag_levels = "a")
-ggsave(path = "figures/", "Fig5.png", dpi=300, width = 190, height = 90, units = "mm")
-ggsave(path = "figures/", "Figure5.pdf", dpi=300, width = 190, height = 90, units = "mm")
+pp = p1 + p2
+pp
+ggsave(file.path("figures", "Fig5.png"), dpi=300, width=190, height=90, units="mm")
